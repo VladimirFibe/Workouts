@@ -10,9 +10,13 @@
 		1FFF39952800289600F4DA93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF39942800289600F4DA93 /* AppDelegate.swift */; };
 		1FFF39972800289600F4DA93 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF39962800289600F4DA93 /* SceneDelegate.swift */; };
 		1FFF39992800289600F4DA93 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF39982800289600F4DA93 /* ViewController.swift */; };
-		1FFF399C2800289600F4DA93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FFF399A2800289600F4DA93 /* Main.storyboard */; };
 		1FFF399E2800289800F4DA93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FFF399D2800289800F4DA93 /* Assets.xcassets */; };
 		1FFF39A12800289800F4DA93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FFF399F2800289800F4DA93 /* LaunchScreen.storyboard */; };
+		1FFF39AA28002FBB00F4DA93 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1FFF39A828002FBB00F4DA93 /* Roboto-Medium.ttf */; };
+		1FFF39AB28002FBB00F4DA93 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1FFF39A928002FBB00F4DA93 /* Roboto-Bold.ttf */; };
+		1FFF39AF280037FF00F4DA93 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF39AE280037FF00F4DA93 /* Workout.swift */; };
+		1FFF39B2280038E200F4DA93 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 1FFF39B1280038E200F4DA93 /* Realm */; };
+		1FFF39B4280038E200F4DA93 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1FFF39B3280038E200F4DA93 /* RealmSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,10 +24,12 @@
 		1FFF39942800289600F4DA93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FFF39962800289600F4DA93 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1FFF39982800289600F4DA93 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		1FFF399B2800289600F4DA93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1FFF399D2800289800F4DA93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1FFF39A02800289800F4DA93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1FFF39A22800289800F4DA93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1FFF39A828002FBB00F4DA93 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		1FFF39A928002FBB00F4DA93 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		1FFF39AE280037FF00F4DA93 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +37,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FFF39B4280038E200F4DA93 /* RealmSwift in Frameworks */,
+				1FFF39B2280038E200F4DA93 /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +64,33 @@
 		1FFF39932800289600F4DA93 /* Workouts */ = {
 			isa = PBXGroup;
 			children = (
-				1FFF39942800289600F4DA93 /* AppDelegate.swift */,
-				1FFF39962800289600F4DA93 /* SceneDelegate.swift */,
+				1FFF39AC280030F700F4DA93 /* Apps */,
+				1FFF39AD280037D900F4DA93 /* Models */,
 				1FFF39982800289600F4DA93 /* ViewController.swift */,
-				1FFF399A2800289600F4DA93 /* Main.storyboard */,
 				1FFF399D2800289800F4DA93 /* Assets.xcassets */,
 				1FFF399F2800289800F4DA93 /* LaunchScreen.storyboard */,
 				1FFF39A22800289800F4DA93 /* Info.plist */,
+				1FFF39A928002FBB00F4DA93 /* Roboto-Bold.ttf */,
+				1FFF39A828002FBB00F4DA93 /* Roboto-Medium.ttf */,
 			);
 			path = Workouts;
+			sourceTree = "<group>";
+		};
+		1FFF39AC280030F700F4DA93 /* Apps */ = {
+			isa = PBXGroup;
+			children = (
+				1FFF39942800289600F4DA93 /* AppDelegate.swift */,
+				1FFF39962800289600F4DA93 /* SceneDelegate.swift */,
+			);
+			path = Apps;
+			sourceTree = "<group>";
+		};
+		1FFF39AD280037D900F4DA93 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1FFF39AE280037FF00F4DA93 /* Workout.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +109,10 @@
 			dependencies = (
 			);
 			name = Workouts;
+			packageProductDependencies = (
+				1FFF39B1280038E200F4DA93 /* Realm */,
+				1FFF39B3280038E200F4DA93 /* RealmSwift */,
+			);
 			productName = Workouts;
 			productReference = 1FFF39912800289600F4DA93 /* Workouts.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +141,9 @@
 				Base,
 			);
 			mainGroup = 1FFF39882800289600F4DA93;
+			packageReferences = (
+				1FFF39B0280038E200F4DA93 /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = 1FFF39922800289600F4DA93 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,7 +160,8 @@
 			files = (
 				1FFF39A12800289800F4DA93 /* LaunchScreen.storyboard in Resources */,
 				1FFF399E2800289800F4DA93 /* Assets.xcassets in Resources */,
-				1FFF399C2800289600F4DA93 /* Main.storyboard in Resources */,
+				1FFF39AB28002FBB00F4DA93 /* Roboto-Bold.ttf in Resources */,
+				1FFF39AA28002FBB00F4DA93 /* Roboto-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,20 +175,13 @@
 				1FFF39992800289600F4DA93 /* ViewController.swift in Sources */,
 				1FFF39952800289600F4DA93 /* AppDelegate.swift in Sources */,
 				1FFF39972800289600F4DA93 /* SceneDelegate.swift in Sources */,
+				1FFF39AF280037FF00F4DA93 /* Workout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		1FFF399A2800289600F4DA93 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1FFF399B2800289600F4DA93 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		1FFF399F2800289800F4DA93 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -286,20 +313,19 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 723HTEFHBA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Workouts/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.1;
+				MARKETING_VERSION = 0.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.ilines.nsu.Workouts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -314,20 +340,19 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 723HTEFHBA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Workouts/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.1;
+				MARKETING_VERSION = 0.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.ilines.nsu.Workouts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -358,6 +383,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1FFF39B0280038E200F4DA93 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1FFF39B1280038E200F4DA93 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1FFF39B0280038E200F4DA93 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		1FFF39B3280038E200F4DA93 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1FFF39B0280038E200F4DA93 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1FFF39892800289600F4DA93 /* Project object */;
 }
