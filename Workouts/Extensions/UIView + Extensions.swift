@@ -75,6 +75,7 @@ extension UIView {
   }
   
   func addConstraintsToFillView(_ view: UIView) {
+    view.addSubview(self)
     anchor(top: view.topAnchor, left: view.leftAnchor,
            bottom: view.bottomAnchor, right: view.rightAnchor)
   }
