@@ -17,6 +17,9 @@
 		1FFF39AF280037FF00F4DA93 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF39AE280037FF00F4DA93 /* Workout.swift */; };
 		1FFF39B2280038E200F4DA93 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 1FFF39B1280038E200F4DA93 /* Realm */; };
 		1FFF39B4280038E200F4DA93 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1FFF39B3280038E200F4DA93 /* RealmSwift */; };
+		1FFF39B728003F3E00F4DA93 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF39B628003F3D00F4DA93 /* RealmManager.swift */; };
+		1FFF39BB280040E600F4DA93 /* WOViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF39BA280040E600F4DA93 /* WOViewController.swift */; };
+		1FFF39BE2800413100F4DA93 /* UIFont + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF39BD2800413100F4DA93 /* UIFont + Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		1FFF39A828002FBB00F4DA93 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		1FFF39A928002FBB00F4DA93 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		1FFF39AE280037FF00F4DA93 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
+		1FFF39B628003F3D00F4DA93 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		1FFF39BA280040E600F4DA93 /* WOViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WOViewController.swift; sourceTree = "<group>"; };
+		1FFF39BD2800413100F4DA93 /* UIFont + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,9 +70,12 @@
 		1FFF39932800289600F4DA93 /* Workouts */ = {
 			isa = PBXGroup;
 			children = (
+				1FFF39BC2800412500F4DA93 /* Extensions */,
 				1FFF39AC280030F700F4DA93 /* Apps */,
 				1FFF39AD280037D900F4DA93 /* Models */,
-				1FFF39982800289600F4DA93 /* ViewController.swift */,
+				1FFF39B528003F2300F4DA93 /* Services */,
+				1FFF39B82800409A00F4DA93 /* Controllers */,
+				1FFF39B9280040B000F4DA93 /* Views */,
 				1FFF399D2800289800F4DA93 /* Assets.xcassets */,
 				1FFF399F2800289800F4DA93 /* LaunchScreen.storyboard */,
 				1FFF39A22800289800F4DA93 /* Info.plist */,
@@ -81,6 +90,7 @@
 			children = (
 				1FFF39942800289600F4DA93 /* AppDelegate.swift */,
 				1FFF39962800289600F4DA93 /* SceneDelegate.swift */,
+				1FFF39982800289600F4DA93 /* ViewController.swift */,
 			);
 			path = Apps;
 			sourceTree = "<group>";
@@ -91,6 +101,37 @@
 				1FFF39AE280037FF00F4DA93 /* Workout.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		1FFF39B528003F2300F4DA93 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				1FFF39B628003F3D00F4DA93 /* RealmManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		1FFF39B82800409A00F4DA93 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1FFF39BA280040E600F4DA93 /* WOViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1FFF39B9280040B000F4DA93 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1FFF39BC2800412500F4DA93 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1FFF39BD2800413100F4DA93 /* UIFont + Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,8 +213,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FFF39BB280040E600F4DA93 /* WOViewController.swift in Sources */,
+				1FFF39BE2800413100F4DA93 /* UIFont + Extensions.swift in Sources */,
 				1FFF39992800289600F4DA93 /* ViewController.swift in Sources */,
 				1FFF39952800289600F4DA93 /* AppDelegate.swift in Sources */,
+				1FFF39B728003F3E00F4DA93 /* RealmManager.swift in Sources */,
 				1FFF39972800289600F4DA93 /* SceneDelegate.swift in Sources */,
 				1FFF39AF280037FF00F4DA93 /* Workout.swift in Sources */,
 			);
