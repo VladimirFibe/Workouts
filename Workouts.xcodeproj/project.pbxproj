@@ -21,6 +21,12 @@
 		1FFF39BB280040E600F4DA93 /* WOViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF39BA280040E600F4DA93 /* WOViewController.swift */; };
 		1FFF39BE2800413100F4DA93 /* UIFont + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF39BD2800413100F4DA93 /* UIFont + Extensions.swift */; };
 		1FFF39C02800439800F4DA93 /* UIColor + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF39BF2800439800F4DA93 /* UIColor + Extensions.swift */; };
+		1FFF39C22800449100F4DA93 /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF39C12800449100F4DA93 /* UIView + Extensions.swift */; };
+		1FFF39C42800451600F4DA93 /* UIStackView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF39C32800451600F4DA93 /* UIStackView + Extensions.swift */; };
+		1FFF39C62800455800F4DA93 /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF39C52800455800F4DA93 /* UILabel + Extensions.swift */; };
+		1FFF39C82800457D00F4DA93 /* Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF39C72800457D00F4DA93 /* Then.swift */; };
+		1FFF39CA280045D900F4DA93 /* Date + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF39C9280045D900F4DA93 /* Date + Extensions.swift */; };
+		1FFF39CC2800460400F4DA93 /* Int + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF39CB2800460400F4DA93 /* Int + Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +44,12 @@
 		1FFF39BA280040E600F4DA93 /* WOViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WOViewController.swift; sourceTree = "<group>"; };
 		1FFF39BD2800413100F4DA93 /* UIFont + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extensions.swift"; sourceTree = "<group>"; };
 		1FFF39BF2800439800F4DA93 /* UIColor + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extensions.swift"; sourceTree = "<group>"; };
+		1FFF39C12800449100F4DA93 /* UIView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
+		1FFF39C32800451600F4DA93 /* UIStackView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extensions.swift"; sourceTree = "<group>"; };
+		1FFF39C52800455800F4DA93 /* UILabel + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extensions.swift"; sourceTree = "<group>"; };
+		1FFF39C72800457D00F4DA93 /* Then.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Then.swift; sourceTree = "<group>"; };
+		1FFF39C9280045D900F4DA93 /* Date + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extensions.swift"; sourceTree = "<group>"; };
+		1FFF39CB2800460400F4DA93 /* Int + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int + Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +145,12 @@
 			children = (
 				1FFF39BD2800413100F4DA93 /* UIFont + Extensions.swift */,
 				1FFF39BF2800439800F4DA93 /* UIColor + Extensions.swift */,
+				1FFF39C12800449100F4DA93 /* UIView + Extensions.swift */,
+				1FFF39C32800451600F4DA93 /* UIStackView + Extensions.swift */,
+				1FFF39C52800455800F4DA93 /* UILabel + Extensions.swift */,
+				1FFF39C72800457D00F4DA93 /* Then.swift */,
+				1FFF39C9280045D900F4DA93 /* Date + Extensions.swift */,
+				1FFF39CB2800460400F4DA93 /* Int + Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -217,13 +235,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FFF39BB280040E600F4DA93 /* WOViewController.swift in Sources */,
+				1FFF39C62800455800F4DA93 /* UILabel + Extensions.swift in Sources */,
 				1FFF39BE2800413100F4DA93 /* UIFont + Extensions.swift in Sources */,
 				1FFF39992800289600F4DA93 /* ViewController.swift in Sources */,
+				1FFF39C82800457D00F4DA93 /* Then.swift in Sources */,
+				1FFF39C42800451600F4DA93 /* UIStackView + Extensions.swift in Sources */,
 				1FFF39952800289600F4DA93 /* AppDelegate.swift in Sources */,
 				1FFF39B728003F3E00F4DA93 /* RealmManager.swift in Sources */,
 				1FFF39C02800439800F4DA93 /* UIColor + Extensions.swift in Sources */,
 				1FFF39972800289600F4DA93 /* SceneDelegate.swift in Sources */,
+				1FFF39C22800449100F4DA93 /* UIView + Extensions.swift in Sources */,
+				1FFF39CA280045D900F4DA93 /* Date + Extensions.swift in Sources */,
 				1FFF39AF280037FF00F4DA93 /* Workout.swift in Sources */,
+				1FFF39CC2800460400F4DA93 /* Int + Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
