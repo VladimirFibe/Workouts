@@ -81,9 +81,12 @@ class NewWorkoutViewController: WOViewController {
   
   @objc func saveAction() {
     let date = dateAndRepeatView.getDate()
-    let reps = dateAndRepeatView.getRepeat()
-    print(date, reps)
+    let reps = repsView.getReps()
+    let sets = repsView.getSet()
+    let times = repsView.getTimer()
+    print(date, sets, reps, times)
     dateAndRepeatView.resetValues()
+    repsView.resetValues()
   }
   // MARK: - UI
   private func configureUI() {

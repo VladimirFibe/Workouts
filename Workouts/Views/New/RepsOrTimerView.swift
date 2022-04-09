@@ -8,72 +8,26 @@ import SwiftUI
 import UIKit
 
 class RepsOrTimerView: UIView {
-  
-  private let setsLabel = UILabel().then {
-    $0.text = "Sets"
-    $0.font = .robotoMedium18()
-    $0.textColor = .specialGray
-  }
-  
-  private let numberOfSetLabel = UILabel().then {
-    $0.text = "0"
-    $0.font = .robotoMedium18()
-    $0.textColor = .specialGray
-  }
-  
-  let setsSlider = UISlider().then {
-    $0.minimumValue = 0
-    $0.maximumValue = 10
-    $0.maximumTrackTintColor = .specialLightBrown
-    $0.minimumTrackTintColor = .specialGreen
-    $0.addTarget(nil, action: #selector(setsSliderChanged), for: .valueChanged)
-  }
-  
+  private let setView = WorkoutSliderView()
+  private let repsView = WorkoutSliderView()
+  private let timerView = WorkoutSliderView()
   private let repeatOrTimerLabel = UILabel().then {
     $0.text = "Choose repeat or timer"
     $0.font = .robotoMedium18()
     $0.textColor = .specialLightBrown
     $0.textAlignment = .center
   }
-  
-  private let repsLabel = UILabel().then {
-    $0.text = "Reps"
-    $0.font = .robotoMedium18()
-    $0.textColor = .specialGray
+  func addTargets() {
+    setView.slider.addTarget(self, action: #selector(setsSliderChanged), for: .valueChanged)
+    repsView.slider.addTarget(self, action: #selector(repsSliderChanged), for: .valueChanged)
+    timerView.slider.addTarget(self, action: #selector(timerSliderChanged), for: .valueChanged)
   }
   
-  private let numberOfRepsLabel = UILabel().then {
-    $0.text = "0"
-    $0.font = .robotoMedium18()
-    $0.textColor = .specialGray
-  }
-  
-  let repsSlider = UISlider().then {
-    $0.minimumValue = 0
-    $0.maximumValue = 50
-    $0.maximumTrackTintColor = .specialLightBrown
-    $0.minimumTrackTintColor = .specialGreen
-    $0.addTarget(nil, action: #selector(repsSliderChanged), for: .valueChanged)
-  }
-  
-  private let timerLabel = UILabel().then {
-    $0.text = "Timer"
-    $0.font = .robotoMedium18()
-    $0.textColor = .specialGray
-  }
-  
-  private let numblerOfTimerLabel = UILabel().then {
-    $0.text = "0 min"
-    $0.font = .robotoMedium18()
-    $0.textColor = .specialGray
-  }
-  
-  let timerSlider = UISlider().then {
-    $0.minimumValue = 0
-    $0.maximumValue = 600
-    $0.maximumTrackTintColor = .specialLightBrown
-    $0.minimumTrackTintColor = .specialGreen
-    $0.addTarget(nil, action: #selector(timerSliderChanged), for: .valueChanged)
+  func resetValues() {
+    setView.configure(title: "Set", min: 0, max: 10)
+    repsView.configure(title: "Reps", min: 0, max: 50)
+    timerView.configure(title: "Timer", min: 0, max: 600)
+    timerView.setNegative()
   }
   
   override init(frame: CGRect) {
@@ -88,72 +42,45 @@ class RepsOrTimerView: UIView {
   func configureUI() {
     backgroundColor = .specialBrown
     layer.cornerRadius = 10
-    let setsStack = UIStackView(arrangedSubviews: [setsLabel, numberOfSetLabel], axis: .horizontal, spacing: 10)
-    let repsStack = UIStackView(arrangedSubviews: [repsLabel, numberOfRepsLabel], axis: .horizontal, spacing: 10)
-    let timerStack = UIStackView(arrangedSubviews: [timerLabel, numblerOfTimerLabel], axis: .horizontal, spacing: 10)
-    
-    addSubview(setsStack)
-    addSubview(setsSlider)
-    addSubview(repeatOrTimerLabel)
-    addSubview(repsStack)
-    addSubview(repsSlider)
-    addSubview(timerStack)
-    addSubview(timerSlider)
-    
-    setsStack.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 20, paddingLeft: 15, paddingRight: 15)
-    setsSlider.anchor(top: setsStack.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 10, paddingLeft: 15, paddingRight: 15)
-    repeatOrTimerLabel.anchor(top: setsSlider.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 20, paddingLeft: 15, paddingRight: 15)
-    repsStack.anchor(top: repeatOrTimerLabel.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 10, paddingLeft: 15, paddingRight: 15)
-    repsSlider.anchor(top: repsStack.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 10, paddingLeft: 15, paddingRight: 15)
-    timerStack.anchor(top: repsSlider.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 20, paddingLeft: 15, paddingRight: 15)
-    timerSlider.anchor(top: timerStack.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 10, paddingLeft: 15, paddingRight: 15)
+    addTargets()
+    resetValues()
+    let stack = UIStackView(arrangedSubviews: [setView, repeatOrTimerLabel, repsView, timerView], axis: .vertical)
+    addSubview(stack)
+    stack.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 10, paddingLeft: 15, paddingRight: 15)
   }
   
   @objc func setsSliderChanged() {
-    numberOfSetLabel.text = String(Int(setsSlider.value))
+    setView.setValueLabel()
   }
-  
+
   @objc func repsSliderChanged() {
-    numberOfRepsLabel.text = String(Int(repsSlider.value))
-    if timerLabel.alpha == 1 {
-      setNegative(label: timerLabel, numberLabel: numblerOfTimerLabel, slider: timerSlider)
+    repsView.setValueLabel()
+    if timerView.titleLabel.alpha == 1 {
+      timerView.setNegative()
     }
-    if repsLabel.alpha < 1 {
-      setActive(label: repsLabel, numberLabel: numberOfRepsLabel, slider: repsSlider)
+    if repsView.titleLabel.alpha < 1 {
+      repsView.setActive()
     }
   }
-  
+
   @objc func timerSliderChanged() {
-    numblerOfTimerLabel.text = Int(timerSlider.value).stringFromSeconds()
-    if repsLabel.alpha == 1 {
-      setNegative(label: repsLabel, numberLabel: numberOfRepsLabel, slider: repsSlider)
+    timerView.setValueLabel()
+    if repsView.titleLabel.alpha == 1 {
+      repsView.setNegative()
     }
-    if timerLabel.alpha < 1 {
-      setActive(label: timerLabel, numberLabel: numblerOfTimerLabel, slider: timerSlider)
+    if timerView.titleLabel.alpha < 1 {
+      timerView.setActive()
     }
   }
-  
-  private func setActive(label: UILabel, numberLabel: UILabel, slider: UISlider) {
-    label.alpha = 1
-    numberLabel.alpha = 1
-    slider.alpha = 1
+
+  func getSet() -> Int{
+    Int(setView.slider.value)
   }
-  
-  private func setNegative(label: UILabel, numberLabel: UILabel, slider: UISlider) {
-    label.alpha = 0.5
-    numberLabel.alpha = 0.5
-    numberLabel.text = "0"
-    slider.alpha = 0.5
-    slider.value = 0
+  func getReps() -> Int{
+    Int(repsView.slider.value)
   }
-  
-  func refreshValues() {
-    numberOfSetLabel.text = "0"
-    numberOfRepsLabel.text = "0"
-    numblerOfTimerLabel.text = "0"
-    timerSlider.value = 0
-    repsSlider.value = 0
-    setsSlider.value = 0
+  func getTimer() -> Int{
+    Int(timerView.slider.value)
   }
 }
 
@@ -163,3 +90,4 @@ struct RepsOrTimerView_Previews: PreviewProvider {
       .edgesIgnoringSafeArea(.all)
   }
 }
+
