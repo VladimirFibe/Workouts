@@ -4,7 +4,7 @@
 //
 //  Created by Vladimir Fibe on 09.04.2022.
 //
-
+import SwiftUI
 import UIKit
 
 class RepsOrTimerView: UIView {
@@ -154,5 +154,12 @@ class RepsOrTimerView: UIView {
     timerSlider.value = 0
     repsSlider.value = 0
     setsSlider.value = 0
+  }
+}
+
+struct RepsOrTimerView_Previews: PreviewProvider {
+  static var previews: some View {
+    SwiftUINewWorkoutViewController()
+      .edgesIgnoringSafeArea(.all)
   }
 }

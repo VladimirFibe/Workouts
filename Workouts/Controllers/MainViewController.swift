@@ -34,7 +34,7 @@ class MainViewController: UIViewController {
   
   private let calendarView = CalendarView(frame: .zero)
   
-  private let addWorkoutButton = UIButton(type: .system).then {
+  private lazy var addWorkoutButton = UIButton(type: .system).then {
     $0.backgroundColor = .specialYellow
     $0.layer.cornerRadius = 10
     $0.setImage(UIImage(named: "+"), for: .normal)

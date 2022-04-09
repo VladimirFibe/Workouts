@@ -44,7 +44,7 @@ class NewWorkoutViewController: WOViewController {
   private let repsLabel = UILabel("Reps or timer")
   private let repsView = RepsOrTimerView(frame: .zero)
   
-  private let saveButton = UIButton().then {
+  private lazy var saveButton = UIButton().then {
     $0.backgroundColor = .specialGreen
     $0.setTitle("SAVE", for: .normal)
     $0.tintColor = .white
@@ -57,6 +57,7 @@ class NewWorkoutViewController: WOViewController {
     super.viewDidLoad()
     configureUI()
     addTapsAndSwipe()
+    saveButton.addTarget(self, action: #selector(saveAction), for: .touchUpInside)
   }
   
   func addTapsAndSwipe() {
@@ -79,7 +80,10 @@ class NewWorkoutViewController: WOViewController {
   }
   
   @objc func saveAction() {
-    print(#function)
+    let date = dateAndRepeatView.getDate()
+    let reps = dateAndRepeatView.getRepeat()
+    print(date, reps)
+    dateAndRepeatView.resetValues()
   }
   // MARK: - UI
   private func configureUI() {
