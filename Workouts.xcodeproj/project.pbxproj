@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F4CA838280076F90045659F /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4CA837280076F90045659F /* CalendarView.swift */; };
+		1F4CA83A280083730045659F /* NewWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4CA839280083730045659F /* NewWorkoutViewController.swift */; };
+		1F4CA83C2800872E0045659F /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4CA83B2800872E0045659F /* WeatherView.swift */; };
+		1F8146C4280113DB00BDB7F4 /* DateAndRepeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8146C3280113DB00BDB7F4 /* DateAndRepeatView.swift */; };
+		1F8146C62801151300BDB7F4 /* RepsOrTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8146C52801151300BDB7F4 /* RepsOrTimerView.swift */; };
 		1FFF39952800289600F4DA93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF39942800289600F4DA93 /* AppDelegate.swift */; };
 		1FFF39972800289600F4DA93 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF39962800289600F4DA93 /* SceneDelegate.swift */; };
 		1FFF39992800289600F4DA93 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF39982800289600F4DA93 /* ViewController.swift */; };
@@ -33,6 +38,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F4CA837280076F90045659F /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		1F4CA839280083730045659F /* NewWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWorkoutViewController.swift; sourceTree = "<group>"; };
+		1F4CA83B2800872E0045659F /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
+		1F8146C3280113DB00BDB7F4 /* DateAndRepeatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndRepeatView.swift; sourceTree = "<group>"; };
+		1F8146C52801151300BDB7F4 /* RepsOrTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepsOrTimerView.swift; sourceTree = "<group>"; };
 		1FFF39912800289600F4DA93 /* Workouts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Workouts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FFF39942800289600F4DA93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FFF39962800289600F4DA93 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +81,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F8146C2280113A700BDB7F4 /* New */ = {
+			isa = PBXGroup;
+			children = (
+				1F8146C3280113DB00BDB7F4 /* DateAndRepeatView.swift */,
+				1F8146C52801151300BDB7F4 /* RepsOrTimerView.swift */,
+			);
+			path = New;
+			sourceTree = "<group>";
+		};
 		1FFF39882800289600F4DA93 = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +157,7 @@
 				1FFF39CD2800465F00F4DA93 /* MainViewController.swift */,
 				1FFF39CF28004A9B00F4DA93 /* StatisticViewController.swift */,
 				1FFF39D128004AAE00F4DA93 /* ProfileViewController.swift */,
+				1F4CA839280083730045659F /* NewWorkoutViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -146,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				1FFF39D3280051A800F4DA93 /* Main */,
+				1F8146C2280113A700BDB7F4 /* New */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -168,6 +189,8 @@
 		1FFF39D3280051A800F4DA93 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				1F4CA837280076F90045659F /* CalendarView.swift */,
+				1F4CA83B2800872E0045659F /* WeatherView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -251,11 +274,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F8146C4280113DB00BDB7F4 /* DateAndRepeatView.swift in Sources */,
 				1FFF39BB280040E600F4DA93 /* WOViewController.swift in Sources */,
 				1FFF39C62800455800F4DA93 /* UILabel + Extensions.swift in Sources */,
+				1F8146C62801151300BDB7F4 /* RepsOrTimerView.swift in Sources */,
 				1FFF39BE2800413100F4DA93 /* UIFont + Extensions.swift in Sources */,
 				1FFF39992800289600F4DA93 /* ViewController.swift in Sources */,
 				1FFF39C82800457D00F4DA93 /* Then.swift in Sources */,
+				1F4CA83A280083730045659F /* NewWorkoutViewController.swift in Sources */,
 				1FFF39C42800451600F4DA93 /* UIStackView + Extensions.swift in Sources */,
 				1FFF39952800289600F4DA93 /* AppDelegate.swift in Sources */,
 				1FFF39D228004AAE00F4DA93 /* ProfileViewController.swift in Sources */,
@@ -265,6 +291,8 @@
 				1FFF39972800289600F4DA93 /* SceneDelegate.swift in Sources */,
 				1FFF39C22800449100F4DA93 /* UIView + Extensions.swift in Sources */,
 				1FFF39CA280045D900F4DA93 /* Date + Extensions.swift in Sources */,
+				1F4CA83C2800872E0045659F /* WeatherView.swift in Sources */,
+				1F4CA838280076F90045659F /* CalendarView.swift in Sources */,
 				1FFF39AF280037FF00F4DA93 /* Workout.swift in Sources */,
 				1FFF39CC2800460400F4DA93 /* Int + Extensions.swift in Sources */,
 				1FFF39D028004A9B00F4DA93 /* StatisticViewController.swift in Sources */,
@@ -335,7 +363,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -389,7 +417,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -413,6 +441,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -440,6 +469,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

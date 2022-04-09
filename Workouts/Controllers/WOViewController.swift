@@ -14,7 +14,7 @@ class WOViewController: UIViewController {
     $0.font = .robotoMedium24()
     $0.textColor = .specialGray
     $0.textAlignment = .center
-    $0.translatesAutoresizingMaskIntoConstraints = false
+    $0.heightAnchor.constraint(equalToConstant: 30).isActive = true
   }
   override func viewDidLoad() {
     super.viewDidLoad()
