@@ -15,6 +15,7 @@ class ProfileViewController: WOViewController {
   }
   private func configureUI() {
     titleLabel.text = "PROFILE"
+    closeButton.isHidden = true
   }
 }
 
@@ -23,6 +24,7 @@ struct SwiftUIProfileViewController: UIViewControllerRepresentable {
   
   func makeUIViewController(context: Context) -> UIViewControllerType {
     let viewController = UIViewControllerType()
+    viewController.modalPresentationStyle = .fullScreen
     return viewController
   }
   

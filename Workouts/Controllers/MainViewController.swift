@@ -15,8 +15,8 @@ class MainViewController: UIViewController {
   let buttonWidth = 80.0
   let calendarHeight = 70.0
   private let localRealm = try! Realm()
-  private let workouts: Results<Workout>! = nil
-  
+  private var workouts: Results<Workout>! = nil
+
   private lazy var userPhotoImageView = UIImageView().then {
     $0.backgroundColor = .systemGray4
     $0.layer.borderColor = UIColor.white.cgColor
@@ -58,9 +58,26 @@ class MainViewController: UIViewController {
     $0.contentMode = .scaleAspectFit
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    tableView.reloadData()
+  }
   override func viewDidLoad() {
     super.viewDidLoad()
+    getWorkouts(Date())
     configureUI()
+  }
+  private func getWorkouts(_ date: Date) {
+    let dateTimeZone = date.localDate()
+    let weekday = dateTimeZone.getWeekday()
+    let (dateStart, dateEnd) = dateTimeZone.startEndDate()
+    
+    let predicateRepeat = NSPredicate(format: "days = \(weekday) AND repeats = true")
+    let predicateUnrepeat = NSPredicate(format: "repeats = false AND date BETWEEN %@", [dateStart, dateEnd])
+    let compund = NSCompoundPredicate(type: .or, subpredicates: [predicateRepeat, predicateUnrepeat])
+    workouts = localRealm.objects(Workout.self) //.filter(compund).sorted(byKeyPath: "name")
+    print(workouts.count)
+    tableView.reloadData()
   }
   // MARK: - Actions
   @objc private func addWorkoutAction() {
@@ -71,6 +88,10 @@ class MainViewController: UIViewController {
   // MARK: - UI
   private func configureUI() {
     view.backgroundColor = .specialBackground
+    calendarView.delegate = self
+    tableView.delegate = self
+    tableView.register(WorkoutCell.self, forCellReuseIdentifier: idCell)
+    tableView.dataSource = self
     
     setupSubviews()
     setupConstraints()
@@ -83,6 +104,7 @@ class MainViewController: UIViewController {
     view.addSubview(addWorkoutButton)
     view.addSubview(weatherView)
     view.addSubview(workoutTodayLabel)
+    view.addSubview(tableView)
   }
   
   private func setupConstraints() {
@@ -93,9 +115,53 @@ class MainViewController: UIViewController {
     addWorkoutButton.anchor(top: calendarView.bottomAnchor, left: calendarView.leftAnchor, paddingTop: 5, width: buttonWidth, height: buttonWidth)
     weatherView.anchor(top: addWorkoutButton.topAnchor, left: addWorkoutButton.rightAnchor, bottom: addWorkoutButton.bottomAnchor, right: margins.rightAnchor, paddingLeft: 10)
     workoutTodayLabel.anchor(top: addWorkoutButton.bottomAnchor, left: addWorkoutButton.leftAnchor, paddingTop: 10)
+    tableView.anchor(top: workoutTodayLabel.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
   }
 }
-
+// MARK: - CalenderViewDelegate
+extension MainViewController: CalenderViewDelegate {
+  func selectDate(_ date: Date) {
+    getWorkouts(date)
+  }
+}
+// MARK: - UITableViewDelegate
+extension MainViewController: UITableViewDelegate {
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    100
+  }
+  func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    let action = UIContextualAction(style: .destructive, title: nil) { _, _, _ in
+      let model = self.workouts[indexPath.row]
+      RealmManager.shared.delete(model)
+      tableView.reloadData()
+    }
+    action.backgroundColor = .specialBackground
+    action.image = UIImage(systemName: "trash")?.withRenderingMode(.alwaysOriginal)
+    return UISwipeActionsConfiguration(actions: [action])
+  }
+}
+// MARK: - UITableViewDataSource
+extension MainViewController: UITableViewDataSource {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    workouts.count
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: idCell, for: indexPath) as! WorkoutCell
+    let model = workouts[indexPath.row]
+    cell.configure(with: model)
+    cell.delegate = self
+    return cell
+  }
+}
+// MARK: -
+extension MainViewController: WorkoutCellDelegate {
+  func startButtonTapped(_ model: Workout) {
+    let viewController = StartViewController()
+    present(viewController, animated: true)
+  }
+}
+// MARK: - Preview
 struct SwiftUIMainViewController: UIViewControllerRepresentable {
   typealias UIViewControllerType = MainViewController
   
@@ -108,7 +174,6 @@ struct SwiftUIMainViewController: UIViewControllerRepresentable {
     
   }
 }
-
 struct MainViewController_Previews: PreviewProvider {
   static var previews: some View {
     SwiftUIMainViewController()

@@ -16,6 +16,14 @@ class WOViewController: UIViewController {
     $0.textAlignment = .center
     $0.heightAnchor.constraint(equalToConstant: 30).isActive = true
   }
+  lazy var closeButton = UIButton().then {
+    $0.setImage(UIImage(named: "close")?.withRenderingMode(.alwaysOriginal), for: .normal)
+    $0.addTarget(nil, action: #selector(closeAction), for: .touchUpInside)
+    $0.layer.cornerRadius = $0.frame.height / 2
+  }
+  @objc func closeAction() {
+    dismiss(animated: true)
+  }
   override func viewDidLoad() {
     super.viewDidLoad()
     configureUI()
@@ -25,5 +33,8 @@ class WOViewController: UIViewController {
     view.backgroundColor = .specialBackground
     view.addSubview(titleLabel)
     titleLabel.centerX(inView: view, topAnchor: view.safeAreaLayoutGuide.topAnchor, paddingTop: 10)
+    view.addSubview(closeButton)
+    closeButton.anchor(top: view.layoutMarginsGuide.topAnchor,
+                       right: view.layoutMarginsGuide.rightAnchor)
   }
 }

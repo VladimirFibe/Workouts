@@ -13,13 +13,7 @@ class NewWorkoutViewController: WOViewController {
   private let localRealm = try! Realm()
   private var workout = Workout()
   private let defaultImage = UIImage(named: "workout1")
-  
-  lazy var closeButton = UIButton().then {
-    $0.setImage(UIImage(named: "close")?.withRenderingMode(.alwaysOriginal), for: .normal)
-    $0.addTarget(nil, action: #selector(closeAction), for: .touchUpInside)
-    $0.layer.cornerRadius = $0.frame.height / 2
-  }
-  
+    
   private let scrollView = UIScrollView().then {
     $0.bounces = false
     $0.showsVerticalScrollIndicator = false
@@ -57,7 +51,6 @@ class NewWorkoutViewController: WOViewController {
     super.viewDidLoad()
     configureUI()
     addTapsAndSwipe()
-    saveButton.addTarget(self, action: #selector(saveAction), for: .touchUpInside)
   }
   
   func addTapsAndSwipe() {
@@ -75,16 +68,31 @@ class NewWorkoutViewController: WOViewController {
     view.endEditing(true)
   }
   
-  @objc func closeAction() {
-    dismiss(animated: true)
-  }
-  
   @objc func saveAction() {
-    let date = dateAndRepeatView.getDate()
-    let reps = repsView.getReps()
-    let sets = repsView.getSet()
-    let times = repsView.getTimer()
-    print(date, sets, reps, times)
+    guard let name = nameTextField.text,
+          name.filter({ $0.isNumber || $0.isLetter }).count > 0 else {
+            print("Введите имя")
+            return
+          }
+    workout.name = name
+    workout.date = dateAndRepeatView.getDate()
+    workout.days = workout.date.getWeekday()
+    workout.sets = repsView.getSet()
+    if workout.sets == 0 {
+      print("Zero sets!!!")
+      return
+    }
+    workout.reps = repsView.getReps()
+    workout.timer = repsView.getTimer()
+    if workout.reps == 0 && workout.timer == 0 {
+      print("Что делать?")
+      return
+    }
+    workout.repeats = dateAndRepeatView.getRepeat()
+    RealmManager.shared.save(workout)
+    print("Сохранено")
+    workout = Workout()
+    nameTextField.text = ""
     dateAndRepeatView.resetValues()
     repsView.resetValues()
   }
@@ -96,7 +104,6 @@ class NewWorkoutViewController: WOViewController {
     setConstraints()
   }
   func setSubviews() {
-    view.addSubview(closeButton)
     view.addSubview(scrollView)
     scrollView.addSubview(nameLabel)
     scrollView.addSubview(nameTextField)
@@ -107,8 +114,6 @@ class NewWorkoutViewController: WOViewController {
     scrollView.addSubview(saveButton)
   }
   func setConstraints() {
-    closeButton.anchor(top: view.layoutMarginsGuide.topAnchor,
-                       right: view.layoutMarginsGuide.rightAnchor)
     scrollView.anchor(top: titleLabel.bottomAnchor,
                       left: view.leftAnchor,
                       bottom: view.safeAreaLayoutGuide.bottomAnchor,

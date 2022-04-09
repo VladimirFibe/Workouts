@@ -15,6 +15,7 @@ class StatisticViewController: WOViewController {
   }
   private func configureUI() {
     titleLabel.text = "STATISTIC"
+    closeButton.isHidden = true
   }
 }
 
