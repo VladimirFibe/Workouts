@@ -24,7 +24,6 @@ struct SwiftUIProfileViewController: UIViewControllerRepresentable {
   
   func makeUIViewController(context: Context) -> UIViewControllerType {
     let viewController = UIViewControllerType()
-    viewController.modalPresentationStyle = .fullScreen
     return viewController
   }
   

@@ -7,7 +7,7 @@
 import SwiftUI
 import UIKit
 
-class RepsOrTimerView: UIView {
+class RepsOrTimerView: TitleView {
   private let setView = WorkoutSliderView()
   private let repsView = WorkoutSliderView()
   private let timerView = WorkoutSliderView()
@@ -40,13 +40,14 @@ class RepsOrTimerView: UIView {
   }
   
   func configureUI() {
-    backgroundColor = .specialBrown
-    layer.cornerRadius = 10
+    titleLabel.text = "Reps or timer"
+    heightAnchor.constraint(equalToConstant: 281).isActive = true
     addTargets()
     resetValues()
+    
     let stack = UIStackView(arrangedSubviews: [setView, repeatOrTimerLabel, repsView, timerView], axis: .vertical)
-    addSubview(stack)
-    stack.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 10, paddingLeft: 15, paddingRight: 15)
+    roundRect.addSubview(stack)
+    stack.anchor(top: roundRect.topAnchor, left: roundRect.leftAnchor, right: roundRect.rightAnchor, paddingTop: 10, paddingLeft: 15, paddingRight: 15)
   }
   
   @objc func setsSliderChanged() {

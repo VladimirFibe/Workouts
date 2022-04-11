@@ -36,6 +36,7 @@ class WorkoutSliderView: UIView {
     translatesAutoresizingMaskIntoConstraints = false
     heightAnchor.constraint(equalToConstant: 64).isActive = true
     let labelsStack = UIStackView(arrangedSubviews: [titleLabel, valueLabel], axis: .horizontal)
+    labelsStack.distribution = .equalSpacing
     let stack = UIStackView(arrangedSubviews: [labelsStack, slider], axis: .vertical)
     addSubview(stack)
     stack.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor)

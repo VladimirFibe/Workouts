@@ -9,6 +9,7 @@ import UIKit
 import SwiftUI
 
 class WOViewController: UIViewController {
+  var timer = Timer()
   let titleLabel = UILabel().then {
     $0.text = "TITLE"
     $0.font = .robotoMedium24()
@@ -22,6 +23,7 @@ class WOViewController: UIViewController {
     $0.layer.cornerRadius = $0.frame.height / 2
   }
   @objc func closeAction() {
+    timer.invalidate()
     dismiss(animated: true)
   }
   override func viewDidLoad() {

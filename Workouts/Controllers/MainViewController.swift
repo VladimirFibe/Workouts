@@ -158,6 +158,8 @@ extension MainViewController: UITableViewDataSource {
 extension MainViewController: WorkoutCellDelegate {
   func startButtonTapped(_ model: Workout) {
     let viewController = StartViewController()
+    viewController.configure(with: model)
+    viewController.modalPresentationStyle = .fullScreen
     present(viewController, animated: true)
   }
 }

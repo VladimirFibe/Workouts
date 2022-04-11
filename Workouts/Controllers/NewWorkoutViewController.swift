@@ -18,24 +18,8 @@ class NewWorkoutViewController: WOViewController {
     $0.bounces = false
     $0.showsVerticalScrollIndicator = false
   }
-  
-  private let nameLabel = UILabel("Name")
-  private let nameTextField = UITextField().then {
-    $0.backgroundColor = .specialBrown
-    $0.borderStyle = .none
-    $0.layer.cornerRadius = 10
-    $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: $0.frame.height))
-    $0.leftViewMode = .always
-    $0.clearButtonMode = .always
-    $0.returnKeyType = .done
-    $0.font = .robotoBold20()
-    $0.textColor = .specialGray
-  }
-  
-  private let dateLabel = UILabel("Date and repeat")
-  private let dateAndRepeatView = DateAndRepeatView(frame: .zero)
-  
-  private let repsLabel = UILabel("Reps or timer")
+  private let nameView = NameView(frame: .zero)
+  private let dateView = DateAndRepeatView(frame: .zero)
   private let repsView = RepsOrTimerView(frame: .zero)
   
   private lazy var saveButton = UIButton().then {
@@ -44,6 +28,7 @@ class NewWorkoutViewController: WOViewController {
     $0.tintColor = .white
     $0.titleLabel?.font = .robotoBold16()
     $0.layer.cornerRadius = 10
+    $0.heightAnchor.constraint(equalToConstant: 55).isActive = true
     $0.addTarget(self, action: #selector(saveAction), for: .touchUpInside)
   }
   
@@ -65,17 +50,17 @@ class NewWorkoutViewController: WOViewController {
   
   // MARK: - Action
   @objc func hideKeyboard() {
-    view.endEditing(true)
+    nameView.endEditing(true)
   }
   
   @objc func saveAction() {
-    guard let name = nameTextField.text,
+    guard let name = nameView.nameTextField.text,
           name.filter({ $0.isNumber || $0.isLetter }).count > 0 else {
             print("Введите имя")
             return
           }
     workout.name = name
-    workout.date = dateAndRepeatView.getDate()
+    workout.date = dateView.getDate()
     workout.days = workout.date.getWeekday()
     workout.sets = repsView.getSet()
     if workout.sets == 0 {
@@ -88,73 +73,34 @@ class NewWorkoutViewController: WOViewController {
       print("Что делать?")
       return
     }
-    workout.repeats = dateAndRepeatView.getRepeat()
+    workout.repeats = dateView.getRepeat()
     RealmManager.shared.save(workout)
     print("Сохранено")
     workout = Workout()
-    nameTextField.text = ""
-    dateAndRepeatView.resetValues()
+    nameView.nameTextField.text = ""
+    dateView.resetValues()
     repsView.resetValues()
   }
   // MARK: - UI
   private func configureUI() {
     titleLabel.text = "NEW WORKOUT"
-    nameTextField.delegate = self
-    setSubviews()
-    setConstraints()
-  }
-  func setSubviews() {
+    let stack = UIStackView(arrangedSubviews: [nameView, dateView, repsView, saveButton], axis: .vertical, spacing: 20)
+    
     view.addSubview(scrollView)
-    scrollView.addSubview(nameLabel)
-    scrollView.addSubview(nameTextField)
-    scrollView.addSubview(dateLabel)
-    scrollView.addSubview(dateAndRepeatView)
-    scrollView.addSubview(repsLabel)
-    scrollView.addSubview(repsView)
-    scrollView.addSubview(saveButton)
-  }
-  func setConstraints() {
+    scrollView.addSubview(stack)
     scrollView.anchor(top: titleLabel.bottomAnchor,
                       left: view.leftAnchor,
                       bottom: view.safeAreaLayoutGuide.bottomAnchor,
                       right: view.rightAnchor)
-    nameLabel.anchor(top: scrollView.topAnchor,
-                     left: view.leftAnchor,
-                     right: view.rightAnchor,
-                     paddingTop: 10, paddingLeft: 25, paddingRight: 20)
-    nameTextField.anchor(top: nameLabel.bottomAnchor,
-                         left: view.leftAnchor,
-                         right: view.rightAnchor,
-                         paddingTop: 3, paddingLeft: 20, paddingRight: 20, height: 38)
-    dateLabel.anchor(top: nameTextField.bottomAnchor,
-                     left: view.leftAnchor,
-                     right: view.rightAnchor,
-                     paddingTop: 10, paddingLeft: 25, paddingRight: 20)
-    dateAndRepeatView.anchor(top: dateLabel.bottomAnchor,
-                         left: view.leftAnchor,
-                         right: view.rightAnchor,
-                         paddingTop: 3, paddingLeft: 20, paddingRight: 20, height: 94)
-    repsLabel.anchor(top: dateAndRepeatView.bottomAnchor,
-                     left: view.leftAnchor,
-                     right: view.rightAnchor,
-                     paddingTop: 10, paddingLeft: 25, paddingRight: 20)
-    repsView.anchor(top: repsLabel.bottomAnchor,
-                         left: view.leftAnchor,
-                         right: view.rightAnchor,
-                         paddingTop: 3, paddingLeft: 20, paddingRight: 20, height: 300)
-    saveButton.anchor(top: repsView.bottomAnchor,
-                      left: view.leftAnchor,
-                      bottom: scrollView.bottomAnchor,
-                      right: view.rightAnchor,
-                      paddingTop: 20, paddingLeft: 20, paddingBottom: 20, paddingRight: 20, height: 55)
+    stack.anchor(top: scrollView.topAnchor,
+                 left: scrollView.leftAnchor,
+                 bottom: scrollView.bottomAnchor,
+                 paddingTop: 10, paddingLeft: 20, paddingBottom: 10)
+    stack.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 40).isActive = true
+
   }
 }
-// MARK: - UITextFieldDelegate
-extension NewWorkoutViewController: UITextFieldDelegate {
-  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    nameTextField.resignFirstResponder()
-  }
-}
+
 // MARK: - Preview
 struct SwiftUINewWorkoutViewController: UIViewControllerRepresentable {
   typealias UIViewControllerType = NewWorkoutViewController
