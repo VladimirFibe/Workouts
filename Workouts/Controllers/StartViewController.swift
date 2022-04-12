@@ -8,13 +8,31 @@ import SwiftUI
 import UIKit
 
 class StartViewController: WOViewController {
-  var sets = 0 { didSet {
-    detailView.configure(sets: "\(sets)/\(workout.sets)")}}
+  var sets = 0 {
+    didSet {
+      detailView.configure(sets: "\(sets)/\(workout.sets)")
+    }
+  }
+  var showTimer: Bool {
+    workout.timer != 0
+  }
   var workout = Workout()
   var workoutAlert = WorkoutAlert()
   private lazy var girlView = UIImageView().then {
     let name = workout.timer == 0 ? "startgirl" : "ellipse"
     $0.image = UIImage(named: name)
+  }
+  private let timerLabel = UILabel("01:35").then {
+    $0.textColor = .specialGray
+    $0.font = .robotoBold48()
+  }
+  let shapeLayer = CAShapeLayer()
+  var durationTimer = 0 {
+    didSet {
+      if showTimer {
+        timerLabel.text = durationTimer.labelFromSecond()
+      }
+    }
   }
   let detailView = DetailView(frame: .zero)
   private let finishButton = UIButton().then {
@@ -27,17 +45,56 @@ class StartViewController: WOViewController {
     $0.addTarget(nil, action: #selector(finishButtonTapped), for: .touchUpInside)
   }
   
+  override func viewDidLayoutSubviews() {
+    if showTimer {
+      animationCircular()
+    }
+  }
   override func viewDidLoad() {
     super.viewDidLoad()
     configureUI()
+    if showTimer {
+      addTaps()
+      girlView.addSubview(timerLabel)
+      timerLabel.center(inView: girlView)
+      durationTimer = workout.timer
+      timerLabel.text = durationTimer.labelFromSecond()
+    }
   }
   
   @objc func finishButtonTapped() {
-//    alertOKCancel(title: "Кончил?", message: nil) {
-//      RealmManager.shared.update(self.workoutModel)
-//      self.timer.invalidate()
-//      self.dismiss(animated: true)
-//    }
+    finish()
+  }
+  
+  @objc private func timerAction() {
+    if durationTimer > 0  {
+      durationTimer -= 1
+    } else {
+      timer.invalidate()
+      durationTimer = workout.timer
+      detailView.configureNextSet()
+      nextSet()
+    }
+  }
+  @objc private func startTimer() {
+    if timer.isValid {
+      print("остановить анимацию")
+    } else {
+      basicAnimation()
+      detailView.configureNextSet()
+      timer = Timer.scheduledTimer(timeInterval: 1,
+                                   target: self,
+                                   selector: #selector(timerAction),
+                                   userInfo: nil,
+                                   repeats: true)
+    }
+  }
+  
+  
+  private func addTaps() {
+    let tapLabel = UITapGestureRecognizer(target: self, action: #selector(startTimer))
+    girlView.isUserInteractionEnabled = true
+    girlView.addGestureRecognizer(tapLabel)
   }
   
   func configure(with model: Workout) {
@@ -62,34 +119,63 @@ class StartViewController: WOViewController {
       girlView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7)
     ])
   }
+  // MARK: - Animation
+  private func animationCircular() {
+    let center = CGPoint(x: girlView.frame.width / 2, y: girlView.frame.height / 2)
+    let endAngle = -CGFloat.pi / 2
+    let startAngle = 2 * CGFloat.pi + endAngle
+    let lineWidth = 21.0
+    let circularPath = UIBezierPath(arcCenter: center,
+                                    radius: center.x - (lineWidth / 2),
+                                    startAngle: startAngle,
+                                    endAngle: endAngle,
+                                    clockwise: false)
+    shapeLayer.path = circularPath.cgPath
+    shapeLayer.lineWidth = lineWidth
+    shapeLayer.fillColor = UIColor.clear.cgColor
+    shapeLayer.strokeEnd = 1
+    shapeLayer.lineCap = .round
+    shapeLayer.strokeColor = UIColor.specialGreen.cgColor
+    girlView.layer.addSublayer(shapeLayer)
+  }
+  
+  private func basicAnimation() {
+    let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
+    basicAnimation.toValue = 0
+    basicAnimation.duration = CFTimeInterval(durationTimer)
+    basicAnimation.fillMode = .forwards
+    basicAnimation.isRemovedOnCompletion = true
+    shapeLayer.add(basicAnimation, forKey: "basicAnimation")
+  }
 }
 // MARK: - StartWorkoutDelegate
 extension StartViewController: DetailViewDelegate {
   func editSet() {
     workoutAlert.customAlert(self) { sets, reps in
-      print(sets, reps)
-//      guard let numberOfSets = Int(sets) else { return }
-//      guard let numberOfReps = Int(reps) else { return }
-//      if self.workoutModel.timer == 0 {
-//        RealmManager.shared.update(self.workoutModel, sets: numberOfSets, reps: numberOfReps, timer: 0)
-//      } else {
-//        RealmManager.shared.update(self.workoutModel, sets: numberOfSets, reps: 0, timer: numberOfReps)
-//      }
-//      self.sets = 0
-//      self.detailView.configure(model: self.workoutModel, sets: self.sets)
+      guard let numberOfSets = Int(sets) else { return }
+      guard let numberOfReps = Int(reps) else { return }
+      if self.workout.timer == 0 {
+        RealmManager.shared.update(self.workout, sets: numberOfSets, reps: numberOfReps, timer: 0)
+      } else {
+        RealmManager.shared.update(self.workout, sets: numberOfSets, reps: 0, timer: numberOfReps)
+      }
+      self.sets = 0
+      self.detailView.configure(model: self.workout, sets: self.sets)
     }
   }
-  
+  func finish() {
+    alertOKCancel(title: "Завершить?", message: nil) {
+      RealmManager.shared.update(self.workout)
+      self.timer.invalidate()
+      self.dismiss(animated: true)
+    }
+  }
   func nextSet() {
     sets += 1
     if sets == workout.sets {
       self.girlView.isUserInteractionEnabled = false
       self.detailView.configureNextSet(true)
-      self.timer.invalidate()
-      alertOKCancel(title: "Закончил?", message: nil) {
-        RealmManager.shared.update(self.workout)
-        self.dismiss(animated: true)
-      }
+      self.finish()
     }
   }
 }

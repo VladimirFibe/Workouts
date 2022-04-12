@@ -10,7 +10,7 @@ import RealmSwift
 
 class Workout: Object {
   @Persisted var date: Date
-  @Persisted var name = "Unknow"
+  @Persisted var name = "Username"
   @Persisted var repeats = true
   @Persisted var sets = 0
   @Persisted var reps = 0
@@ -19,9 +19,3 @@ class Workout: Object {
   @Persisted var status = false
   @Persisted var days = 0
 }
-//
-//extension Workout {
-//  var days: Int {
-//    Calendar.current.component(.weekday, from: date)
-//  }
-//}

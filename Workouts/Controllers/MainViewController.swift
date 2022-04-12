@@ -75,7 +75,7 @@ class MainViewController: UIViewController {
     let predicateRepeat = NSPredicate(format: "days = \(weekday) AND repeats = true")
     let predicateUnrepeat = NSPredicate(format: "repeats = false AND date BETWEEN %@", [dateStart, dateEnd])
     let compund = NSCompoundPredicate(type: .or, subpredicates: [predicateRepeat, predicateUnrepeat])
-    workouts = localRealm.objects(Workout.self) //.filter(compund).sorted(byKeyPath: "name")
+    workouts = localRealm.objects(Workout.self).filter(compund).sorted(byKeyPath: "name")
     print(workouts.count)
     tableView.reloadData()
   }
@@ -109,13 +109,35 @@ class MainViewController: UIViewController {
   
   private func setupConstraints() {
     let margins = view.layoutMarginsGuide
-    userPhotoImageView.anchor(top: margins.topAnchor, left: margins.leftAnchor, width: diameter, height: diameter)
-    calendarView.anchor(top: userPhotoImageView.topAnchor, left: userPhotoImageView.leftAnchor, right: margins.rightAnchor, paddingTop: diameter / 2, height: calendarHeight)
-    userNameLabel.anchor(top: userPhotoImageView.topAnchor, left: userPhotoImageView.rightAnchor, bottom: calendarView.topAnchor, right: calendarView.rightAnchor, paddingLeft: 10)
-    addWorkoutButton.anchor(top: calendarView.bottomAnchor, left: calendarView.leftAnchor, paddingTop: 5, width: buttonWidth, height: buttonWidth)
-    weatherView.anchor(top: addWorkoutButton.topAnchor, left: addWorkoutButton.rightAnchor, bottom: addWorkoutButton.bottomAnchor, right: margins.rightAnchor, paddingLeft: 10)
-    workoutTodayLabel.anchor(top: addWorkoutButton.bottomAnchor, left: addWorkoutButton.leftAnchor, paddingTop: 10)
-    tableView.anchor(top: workoutTodayLabel.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
+    userPhotoImageView.anchor(top: margins.topAnchor,
+                              left: margins.leftAnchor,
+                              width: diameter, height: diameter)
+    calendarView.anchor(top: userPhotoImageView.topAnchor,
+                        left: userPhotoImageView.leftAnchor,
+                        right: margins.rightAnchor,
+                        paddingTop: diameter / 2,
+                        height: calendarHeight)
+    userNameLabel.anchor(top: userPhotoImageView.topAnchor,
+                         left: userPhotoImageView.rightAnchor,
+                         bottom: calendarView.topAnchor,
+                         right: calendarView.rightAnchor,
+                         paddingLeft: 10)
+    addWorkoutButton.anchor(top: calendarView.bottomAnchor,
+                            left: calendarView.leftAnchor,
+                            paddingTop: 5,
+                            width: buttonWidth, height: buttonWidth)
+    weatherView.anchor(top: addWorkoutButton.topAnchor,
+                       left: addWorkoutButton.rightAnchor,
+                       bottom: addWorkoutButton.bottomAnchor,
+                       right: margins.rightAnchor,
+                       paddingLeft: 10)
+    workoutTodayLabel.anchor(top: addWorkoutButton.bottomAnchor,
+                             left: addWorkoutButton.leftAnchor,
+                             paddingTop: 10)
+    tableView.anchor(top: workoutTodayLabel.bottomAnchor,
+                     left: view.leftAnchor,
+                     bottom: view.bottomAnchor,
+                     right: view.rightAnchor)
   }
 }
 // MARK: - CalenderViewDelegate
@@ -154,7 +176,7 @@ extension MainViewController: UITableViewDataSource {
     return cell
   }
 }
-// MARK: -
+// MARK: - WorkoutCellDelegate
 extension MainViewController: WorkoutCellDelegate {
   func startButtonTapped(_ model: Workout) {
     let viewController = StartViewController()

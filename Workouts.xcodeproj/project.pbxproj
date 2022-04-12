@@ -15,6 +15,7 @@
 		1F4CA83C2800872E0045659F /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4CA83B2800872E0045659F /* WeatherView.swift */; };
 		1F8146C4280113DB00BDB7F4 /* DateAndRepeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8146C3280113DB00BDB7F4 /* DateAndRepeatView.swift */; };
 		1F8146C62801151300BDB7F4 /* RepsOrTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8146C52801151300BDB7F4 /* RepsOrTimerView.swift */; };
+		1FBDFA662805E67A001B4946 /* StatisticCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBDFA652805E67A001B4946 /* StatisticCell.swift */; };
 		1FCAAB322802369800D6CB28 /* WorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCAAB312802369800D6CB28 /* WorkoutCell.swift */; };
 		1FCAAB3428024BB300D6CB28 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCAAB3328024BB300D6CB28 /* StartViewController.swift */; };
 		1FF5550B2801448500652598 /* WorkoutSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF5550A2801448500652598 /* WorkoutSliderView.swift */; };
@@ -56,6 +57,7 @@
 		1F4CA83B2800872E0045659F /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		1F8146C3280113DB00BDB7F4 /* DateAndRepeatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndRepeatView.swift; sourceTree = "<group>"; };
 		1F8146C52801151300BDB7F4 /* RepsOrTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepsOrTimerView.swift; sourceTree = "<group>"; };
+		1FBDFA652805E67A001B4946 /* StatisticCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticCell.swift; sourceTree = "<group>"; };
 		1FCAAB312802369800D6CB28 /* WorkoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCell.swift; sourceTree = "<group>"; };
 		1FCAAB3328024BB300D6CB28 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		1FF5550A2801448500652598 /* WorkoutSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSliderView.swift; sourceTree = "<group>"; };
@@ -110,6 +112,14 @@
 				1F1CF95128031DDF00C9F1C1 /* NameView.swift */,
 			);
 			path = New;
+			sourceTree = "<group>";
+		};
+		1FBDFA642805E639001B4946 /* Statistic */ = {
+			isa = PBXGroup;
+			children = (
+				1FBDFA652805E67A001B4946 /* StatisticCell.swift */,
+			);
+			path = Statistic;
 			sourceTree = "<group>";
 		};
 		1FF590C528044ACF005F540B /* Start */ = {
@@ -213,6 +223,7 @@
 		1FFF39B9280040B000F4DA93 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1FBDFA642805E639001B4946 /* Statistic */,
 				1FF590CB28046A40005F540B /* Alerts */,
 				1FF590C528044ACF005F540B /* Start */,
 				1FFF39D3280051A800F4DA93 /* Main */,
@@ -347,6 +358,7 @@
 				1FFF39C42800451600F4DA93 /* UIStackView + Extensions.swift in Sources */,
 				1FFF39952800289600F4DA93 /* AppDelegate.swift in Sources */,
 				1FF590C728044AE7005F540B /* DetailView.swift in Sources */,
+				1FBDFA662805E67A001B4946 /* StatisticCell.swift in Sources */,
 				1FFF39D228004AAE00F4DA93 /* ProfileViewController.swift in Sources */,
 				1FFF39B728003F3E00F4DA93 /* RealmManager.swift in Sources */,
 				1FFF39C02800439800F4DA93 /* UIColor + Extensions.swift in Sources */,

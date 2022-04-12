@@ -34,7 +34,9 @@ class WOViewController: UIViewController {
   private func configureUI() {
     view.backgroundColor = .specialBackground
     view.addSubview(titleLabel)
-    titleLabel.centerX(inView: view, topAnchor: view.safeAreaLayoutGuide.topAnchor, paddingTop: 10)
+    titleLabel.centerX(inView: view,
+                       topAnchor: view.safeAreaLayoutGuide.topAnchor,
+                       paddingTop: 10)
     view.addSubview(closeButton)
     closeButton.anchor(top: view.layoutMarginsGuide.topAnchor,
                        right: view.layoutMarginsGuide.rightAnchor)

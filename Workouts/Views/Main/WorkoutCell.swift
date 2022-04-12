@@ -70,7 +70,7 @@ class WorkoutCell: UITableViewCell {
       button.setTitle("COMPLETE", for: .normal)
       button.backgroundColor = .specialGreen
       button.tintColor = .white
-      button.isEnabled = false
+//      button.isEnabled = false
     } else {
       button.setTitle("START", for: .normal)
       button.backgroundColor = .specialYellow
