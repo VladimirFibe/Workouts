@@ -8,13 +8,14 @@ import SwiftUI
 import UIKit
 
 class StartViewController: WOViewController {
-  var sets = 0
+  var sets = 0 { didSet {
+    detailView.configure(sets: "\(sets)/\(workout.sets)")}}
   var workout = Workout()
+  var workoutAlert = WorkoutAlert()
   private lazy var girlView = UIImageView().then {
     let name = workout.timer == 0 ? "startgirl" : "ellipse"
     $0.image = UIImage(named: name)
   }
-  
   let detailView = DetailView(frame: .zero)
   private let finishButton = UIButton().then {
     $0.backgroundColor = .specialGreen
@@ -30,6 +31,7 @@ class StartViewController: WOViewController {
     super.viewDidLoad()
     configureUI()
   }
+  
   @objc func finishButtonTapped() {
 //    alertOKCancel(title: "Кончил?", message: nil) {
 //      RealmManager.shared.update(self.workoutModel)
@@ -37,12 +39,15 @@ class StartViewController: WOViewController {
 //      self.dismiss(animated: true)
 //    }
   }
+  
   func configure(with model: Workout) {
     workout = model
     detailView.configure(model: model, sets: sets)
   }
+  
   private func configureUI() {
     titleLabel.text = "START WORKOUT"
+    detailView.delegate = self
     let girlStack = UIStackView(arrangedSubviews: [girlView], axis: .vertical, spacing: 0)
     girlStack.alignment = .center
     let stack = UIStackView(arrangedSubviews: [girlStack, detailView, finishButton], axis: .vertical, spacing: 20)
@@ -58,7 +63,36 @@ class StartViewController: WOViewController {
     ])
   }
 }
-
+// MARK: - StartWorkoutDelegate
+extension StartViewController: DetailViewDelegate {
+  func editSet() {
+    workoutAlert.customAlert(self) { sets, reps in
+      print(sets, reps)
+//      guard let numberOfSets = Int(sets) else { return }
+//      guard let numberOfReps = Int(reps) else { return }
+//      if self.workoutModel.timer == 0 {
+//        RealmManager.shared.update(self.workoutModel, sets: numberOfSets, reps: numberOfReps, timer: 0)
+//      } else {
+//        RealmManager.shared.update(self.workoutModel, sets: numberOfSets, reps: 0, timer: numberOfReps)
+//      }
+//      self.sets = 0
+//      self.detailView.configure(model: self.workoutModel, sets: self.sets)
+    }
+  }
+  
+  func nextSet() {
+    sets += 1
+    if sets == workout.sets {
+      self.girlView.isUserInteractionEnabled = false
+      self.detailView.configureNextSet(true)
+      self.timer.invalidate()
+      alertOKCancel(title: "Закончил?", message: nil) {
+        RealmManager.shared.update(self.workout)
+        self.dismiss(animated: true)
+      }
+    }
+  }
+}
 struct SwiftUIStartViewController: UIViewControllerRepresentable {
   typealias UIViewControllerType = StartViewController
   

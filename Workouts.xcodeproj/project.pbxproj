@@ -20,6 +20,8 @@
 		1FF5550B2801448500652598 /* WorkoutSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF5550A2801448500652598 /* WorkoutSliderView.swift */; };
 		1FF590C728044AE7005F540B /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF590C628044AE7005F540B /* DetailView.swift */; };
 		1FF590C928044CBC005F540B /* DetailRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF590C828044CBC005F540B /* DetailRowView.swift */; };
+		1FF590CD28046A89005F540B /* UIViewController + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF590CC28046A89005F540B /* UIViewController + Extensions.swift */; };
+		1FF590CF280484C9005F540B /* WorkoutAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF590CE280484C9005F540B /* WorkoutAlert.swift */; };
 		1FFF39952800289600F4DA93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF39942800289600F4DA93 /* AppDelegate.swift */; };
 		1FFF39972800289600F4DA93 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF39962800289600F4DA93 /* SceneDelegate.swift */; };
 		1FFF39992800289600F4DA93 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFF39982800289600F4DA93 /* ViewController.swift */; };
@@ -59,6 +61,8 @@
 		1FF5550A2801448500652598 /* WorkoutSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSliderView.swift; sourceTree = "<group>"; };
 		1FF590C628044AE7005F540B /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		1FF590C828044CBC005F540B /* DetailRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRowView.swift; sourceTree = "<group>"; };
+		1FF590CC28046A89005F540B /* UIViewController + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extensions.swift"; sourceTree = "<group>"; };
+		1FF590CE280484C9005F540B /* WorkoutAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutAlert.swift; sourceTree = "<group>"; };
 		1FFF39912800289600F4DA93 /* Workouts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Workouts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FFF39942800289600F4DA93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FFF39962800289600F4DA93 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +119,22 @@
 				1FF590C828044CBC005F540B /* DetailRowView.swift */,
 			);
 			path = Start;
+			sourceTree = "<group>";
+		};
+		1FF590CA28046A27005F540B /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				1F0FE922280285030050E836 /* TitleView.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		1FF590CB28046A40005F540B /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				1FF590CE280484C9005F540B /* WorkoutAlert.swift */,
+			);
+			path = Alerts;
 			sourceTree = "<group>";
 		};
 		1FFF39882800289600F4DA93 = {
@@ -193,10 +213,11 @@
 		1FFF39B9280040B000F4DA93 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1FF590CB28046A40005F540B /* Alerts */,
 				1FF590C528044ACF005F540B /* Start */,
 				1FFF39D3280051A800F4DA93 /* Main */,
 				1F8146C2280113A700BDB7F4 /* New */,
-				1F0FE922280285030050E836 /* TitleView.swift */,
+				1FF590CA28046A27005F540B /* Shared */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -209,6 +230,7 @@
 				1FFF39C12800449100F4DA93 /* UIView + Extensions.swift */,
 				1FFF39C32800451600F4DA93 /* UIStackView + Extensions.swift */,
 				1FFF39C52800455800F4DA93 /* UILabel + Extensions.swift */,
+				1FF590CC28046A89005F540B /* UIViewController + Extensions.swift */,
 				1FFF39C72800457D00F4DA93 /* Then.swift */,
 				1FFF39C9280045D900F4DA93 /* Date + Extensions.swift */,
 				1FFF39CB2800460400F4DA93 /* Int + Extensions.swift */,
@@ -306,10 +328,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FF590CF280484C9005F540B /* WorkoutAlert.swift in Sources */,
 				1F8146C4280113DB00BDB7F4 /* DateAndRepeatView.swift in Sources */,
 				1FCAAB322802369800D6CB28 /* WorkoutCell.swift in Sources */,
 				1FFF39BB280040E600F4DA93 /* WOViewController.swift in Sources */,
 				1FFF39C62800455800F4DA93 /* UILabel + Extensions.swift in Sources */,
+				1FF590CD28046A89005F540B /* UIViewController + Extensions.swift in Sources */,
 				1FF5550B2801448500652598 /* WorkoutSliderView.swift in Sources */,
 				1F0FE923280285030050E836 /* TitleView.swift in Sources */,
 				1F8146C62801151300BDB7F4 /* RepsOrTimerView.swift in Sources */,
