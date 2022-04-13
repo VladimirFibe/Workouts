@@ -10,6 +10,7 @@
 		1F02B2E92801C65B00B0DA69 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F02B2E82801C65B00B0DA69 /* CalendarCell.swift */; };
 		1F0FE923280285030050E836 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0FE922280285030050E836 /* TitleView.swift */; };
 		1F1CF95228031DE000C9F1C1 /* NameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1CF95128031DDF00C9F1C1 /* NameView.swift */; };
+		1F26C56228069EA6008DCE28 /* ResultWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F26C56128069EA6008DCE28 /* ResultWorkout.swift */; };
 		1F4CA838280076F90045659F /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4CA837280076F90045659F /* CalendarView.swift */; };
 		1F4CA83A280083730045659F /* NewWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4CA839280083730045659F /* NewWorkoutViewController.swift */; };
 		1F4CA83C2800872E0045659F /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4CA83B2800872E0045659F /* WeatherView.swift */; };
@@ -53,6 +54,7 @@
 		1F02B2E82801C65B00B0DA69 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		1F0FE922280285030050E836 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		1F1CF95128031DDF00C9F1C1 /* NameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameView.swift; sourceTree = "<group>"; };
+		1F26C56128069EA6008DCE28 /* ResultWorkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultWorkout.swift; sourceTree = "<group>"; };
 		1F4CA837280076F90045659F /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		1F4CA839280083730045659F /* NewWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWorkoutViewController.swift; sourceTree = "<group>"; };
 		1F4CA83B2800872E0045659F /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 			children = (
 				1FFF39AE280037FF00F4DA93 /* Workout.swift */,
 				1F9BEA502806623E00F1D90C /* DifferenceWorkout.swift */,
+				1F26C56128069EA6008DCE28 /* ResultWorkout.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				1FF590C928044CBC005F540B /* DetailRowView.swift in Sources */,
 				1FFF39992800289600F4DA93 /* ViewController.swift in Sources */,
 				1F1CF95228031DE000C9F1C1 /* NameView.swift in Sources */,
+				1F26C56228069EA6008DCE28 /* ResultWorkout.swift in Sources */,
 				1F02B2E92801C65B00B0DA69 /* CalendarCell.swift in Sources */,
 				1FFF39C82800457D00F4DA93 /* Then.swift in Sources */,
 				1F4CA83A280083730045659F /* NewWorkoutViewController.swift in Sources */,

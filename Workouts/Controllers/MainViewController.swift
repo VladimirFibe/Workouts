@@ -10,6 +10,7 @@ import SwiftUI
 import RealmSwift
 
 class MainViewController: UIViewController {
+  var day = Date()
   let idCell = "MainCell"
   let diameter = 100.0
   let buttonWidth = 80.0
@@ -20,12 +21,14 @@ class MainViewController: UIViewController {
   private lazy var userPhotoImageView = UIImageView().then {
     $0.backgroundColor = .systemGray4
     $0.layer.borderColor = UIColor.white.cgColor
+    $0.image = UIImage(named: "avatar")
+    $0.clipsToBounds = true
     $0.layer.borderWidth = 5
     $0.layer.cornerRadius = diameter / 2
   }
   
   private let userNameLabel = UILabel().then {
-    $0.text = "User Name"
+    $0.text = "Брюс Уиллис"
     $0.textColor = .specialGray
     $0.font = .robotoMedium24()
     $0.minimumScaleFactor = 0.5
@@ -59,13 +62,8 @@ class MainViewController: UIViewController {
   }
   func hideornot() {
     tableView.reloadData()
-    if workouts.count == 0 {
-      imageView.isHidden = false
-      tableView.isHidden = true
-    } else {
-      imageView.isHidden = true
-      tableView.isHidden = false
-    }
+    imageView.isHidden = true
+    tableView.isHidden = false
   }
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
@@ -89,6 +87,7 @@ class MainViewController: UIViewController {
   // MARK: - Actions
   @objc private func addWorkoutAction() {
     let viewController = NewWorkoutViewController()
+    viewController.day = day
     viewController.modalPresentationStyle = .fullScreen
     present(viewController, animated: true)
   }
@@ -99,14 +98,8 @@ class MainViewController: UIViewController {
     tableView.delegate = self
     tableView.register(WorkoutCell.self, forCellReuseIdentifier: idCell)
     tableView.dataSource = self
-    let stack = UIStackView(arrangedSubviews: [imageView, tableView], axis: .vertical, spacing: 0)
     setupSubviews()
     setupConstraints()
-    view.addSubview(stack)
-    stack.anchor(top: workoutTodayLabel.bottomAnchor,
-                     left: view.leftAnchor,
-                     bottom: view.bottomAnchor,
-                     right: view.rightAnchor)
   }
   
   private func setupSubviews() {
@@ -116,7 +109,7 @@ class MainViewController: UIViewController {
     view.addSubview(addWorkoutButton)
     view.addSubview(weatherView)
     view.addSubview(workoutTodayLabel)
-    
+    view.addSubview(tableView)
   }
   
   private func setupConstraints() {
@@ -146,13 +139,17 @@ class MainViewController: UIViewController {
     workoutTodayLabel.anchor(top: addWorkoutButton.bottomAnchor,
                              left: addWorkoutButton.leftAnchor,
                              paddingTop: 10)
-    
+    tableView.anchor(top: workoutTodayLabel.bottomAnchor,
+                     left: view.leftAnchor,
+                     bottom: view.bottomAnchor,
+                     right: view.rightAnchor)
   }
 }
 // MARK: - CalenderViewDelegate
 extension MainViewController: CalenderViewDelegate {
   func selectDate(_ date: Date) {
     getWorkouts(date)
+    day = date
   }
 }
 // MARK: - UITableViewDelegate

@@ -8,6 +8,9 @@ import SwiftUI
 import UIKit
 
 class DateAndRepeatView: TitleView {
+  var day = Date() {
+    didSet { datePicker.date = day}
+  }
   private let dateLabel = UILabel().then {
     $0.text = "Date"
     $0.font = .robotoMedium18()
@@ -42,7 +45,6 @@ class DateAndRepeatView: TitleView {
   func configureUI() {
     titleLabel.text = "Date and repeat"
     heightAnchor.constraint(equalToConstant: 114).isActive = true
-
     let dateStack = UIStackView(arrangedSubviews: [dateLabel, datePicker], axis: .horizontal)
     let repeatStack = UIStackView(arrangedSubviews: [repeatLabel, repeatSwitch], axis: .horizontal)
     let stack = UIStackView(arrangedSubviews: [dateStack, repeatStack], axis: .vertical)
@@ -52,7 +54,7 @@ class DateAndRepeatView: TitleView {
   
   func resetValues() {
     repeatSwitch.isOn = true
-    datePicker.date = Date()
+    datePicker.date = day
   }
   
   func getRepeat() -> Bool {

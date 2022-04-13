@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftUI
+import RealmSwift
 
 class ProfileViewController: WOViewController {
   override func viewDidLoad() {
@@ -16,6 +17,9 @@ class ProfileViewController: WOViewController {
   private func configureUI() {
     titleLabel.text = "PROFILE"
     closeButton.isHidden = true
+    let stack = UIStackView(arrangedSubviews: [], axis: .vertical, spacing: 10)
+    view.addSubview(stack)
+    stack.anchor(top: titleLabel.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor)
   }
 }
 

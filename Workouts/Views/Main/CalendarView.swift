@@ -69,7 +69,7 @@ extension CalendarView: UICollectionViewDelegate {
 // MARK: - UICollectionViewDelegateFlowLayout
 extension CalendarView: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    let width = (collectionView.frame.width - 18) / 7
+    let width = ((collectionView.frame.width - 18) / 7).rounded(.down)
     return CGSize(width: width, height: collectionView.frame.height)
   }
   

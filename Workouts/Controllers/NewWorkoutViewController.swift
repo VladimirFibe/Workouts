@@ -10,6 +10,7 @@ import SwiftUI
 import RealmSwift
 
 class NewWorkoutViewController: WOViewController {
+  var day = Date()
   private let localRealm = try! Realm()
   private var workout = Workout()
   private let defaultImage = UIImage(named: "workout1")
@@ -84,8 +85,8 @@ class NewWorkoutViewController: WOViewController {
   // MARK: - UI
   private func configureUI() {
     titleLabel.text = "NEW WORKOUT"
+    dateView.day = day
     let stack = UIStackView(arrangedSubviews: [nameView, dateView, repsView, saveButton], axis: .vertical, spacing: 20)
-    
     view.addSubview(scrollView)
     scrollView.addSubview(stack)
     scrollView.anchor(top: titleLabel.bottomAnchor,
