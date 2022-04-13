@@ -60,7 +60,7 @@ class NewWorkoutViewController: WOViewController {
             return
           }
     workout.name = name
-    workout.date = dateView.getDate()
+    workout.date = dateView.getDate().localDate()
     workout.days = workout.date.getWeekday()
     workout.sets = repsView.getSet()
     if workout.sets == 0 {

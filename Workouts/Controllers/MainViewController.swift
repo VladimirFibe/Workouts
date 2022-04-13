@@ -57,10 +57,19 @@ class MainViewController: UIViewController {
   private let imageView = UIImageView(image: UIImage(named: "notraining")).then {
     $0.contentMode = .scaleAspectFit
   }
-  
+  func hideornot() {
+    tableView.reloadData()
+    if workouts.count == 0 {
+      imageView.isHidden = false
+      tableView.isHidden = true
+    } else {
+      imageView.isHidden = true
+      tableView.isHidden = false
+    }
+  }
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    tableView.reloadData()
+    hideornot()
   }
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -71,13 +80,11 @@ class MainViewController: UIViewController {
     let dateTimeZone = date.localDate()
     let weekday = dateTimeZone.getWeekday()
     let (dateStart, dateEnd) = dateTimeZone.startEndDate()
-    
     let predicateRepeat = NSPredicate(format: "days = \(weekday) AND repeats = true")
     let predicateUnrepeat = NSPredicate(format: "repeats = false AND date BETWEEN %@", [dateStart, dateEnd])
     let compund = NSCompoundPredicate(type: .or, subpredicates: [predicateRepeat, predicateUnrepeat])
     workouts = localRealm.objects(Workout.self).filter(compund).sorted(byKeyPath: "name")
-    print(workouts.count)
-    tableView.reloadData()
+    hideornot()
   }
   // MARK: - Actions
   @objc private func addWorkoutAction() {
@@ -92,9 +99,14 @@ class MainViewController: UIViewController {
     tableView.delegate = self
     tableView.register(WorkoutCell.self, forCellReuseIdentifier: idCell)
     tableView.dataSource = self
-    
+    let stack = UIStackView(arrangedSubviews: [imageView, tableView], axis: .vertical, spacing: 0)
     setupSubviews()
     setupConstraints()
+    view.addSubview(stack)
+    stack.anchor(top: workoutTodayLabel.bottomAnchor,
+                     left: view.leftAnchor,
+                     bottom: view.bottomAnchor,
+                     right: view.rightAnchor)
   }
   
   private func setupSubviews() {
@@ -104,7 +116,7 @@ class MainViewController: UIViewController {
     view.addSubview(addWorkoutButton)
     view.addSubview(weatherView)
     view.addSubview(workoutTodayLabel)
-    view.addSubview(tableView)
+    
   }
   
   private func setupConstraints() {
@@ -134,10 +146,7 @@ class MainViewController: UIViewController {
     workoutTodayLabel.anchor(top: addWorkoutButton.bottomAnchor,
                              left: addWorkoutButton.leftAnchor,
                              paddingTop: 10)
-    tableView.anchor(top: workoutTodayLabel.bottomAnchor,
-                     left: view.leftAnchor,
-                     bottom: view.bottomAnchor,
-                     right: view.rightAnchor)
+    
   }
 }
 // MARK: - CalenderViewDelegate

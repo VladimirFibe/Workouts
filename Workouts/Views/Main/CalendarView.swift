@@ -45,17 +45,13 @@ extension CalendarView: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     7
   }
-  
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: idCell, for: indexPath) as! CalendarCell
     if indexPath.item == 0 {
       week = Date().getWeekArray()
     }
-    if indexPath.item < week.count {
-      cell.configure(with: week[indexPath.item])
-    } else {
-      cell.configure(with: Days(week: "DD", day: "00"))
-    }
+    let day = indexPath.item < week.count ? week[indexPath.item] : Days()
+    cell.configure(with: day)
     if indexPath.item == 6 {
       collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .right)
     }
@@ -67,7 +63,7 @@ extension CalendarView: UICollectionViewDataSource {
 extension CalendarView: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let dateTimeZone = Date().localDate()
-    delegate?.selectDate(dateTimeZone.offsetDays(days: 6 - indexPath.item))
+    delegate?.selectDate(dateTimeZone.offsetDays(6 - indexPath.item))
   }
 }
 // MARK: - UICollectionViewDelegateFlowLayout

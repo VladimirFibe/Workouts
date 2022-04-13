@@ -35,13 +35,16 @@ class StatisticCell: UITableViewCell {
     fatalError("init(coder:) has not been implemented")
   }
   
-  func configure(with model: Workout) {
-    workout = model
+  func configure(with model: DifferenceWorkout) {
     nameLabel.text = model.name
-    beforeLabel.text = "Before: 18 Now: 20"
-    valueLabel.text = "+2"
-    valueLabel.textColor = .specialGreen
-    
+    beforeLabel.text = "Before: \(model.first) Now: \(model.last)"
+    let difference = model.last - model.first
+    valueLabel.text = "\(difference)"
+    switch difference {
+    case ..<0: valueLabel.textColor = .specialGreen
+    case 1...: valueLabel.textColor = .specialDarkYellow
+    default: valueLabel.textColor = .specialGreen
+    }
   }
   
   func configureUI() {

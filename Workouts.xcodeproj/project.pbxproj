@@ -15,6 +15,7 @@
 		1F4CA83C2800872E0045659F /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4CA83B2800872E0045659F /* WeatherView.swift */; };
 		1F8146C4280113DB00BDB7F4 /* DateAndRepeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8146C3280113DB00BDB7F4 /* DateAndRepeatView.swift */; };
 		1F8146C62801151300BDB7F4 /* RepsOrTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8146C52801151300BDB7F4 /* RepsOrTimerView.swift */; };
+		1F9BEA512806623E00F1D90C /* DifferenceWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9BEA502806623E00F1D90C /* DifferenceWorkout.swift */; };
 		1FBDFA662805E67A001B4946 /* StatisticCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBDFA652805E67A001B4946 /* StatisticCell.swift */; };
 		1FCAAB322802369800D6CB28 /* WorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCAAB312802369800D6CB28 /* WorkoutCell.swift */; };
 		1FCAAB3428024BB300D6CB28 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCAAB3328024BB300D6CB28 /* StartViewController.swift */; };
@@ -57,6 +58,7 @@
 		1F4CA83B2800872E0045659F /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		1F8146C3280113DB00BDB7F4 /* DateAndRepeatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndRepeatView.swift; sourceTree = "<group>"; };
 		1F8146C52801151300BDB7F4 /* RepsOrTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepsOrTimerView.swift; sourceTree = "<group>"; };
+		1F9BEA502806623E00F1D90C /* DifferenceWorkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifferenceWorkout.swift; sourceTree = "<group>"; };
 		1FBDFA652805E67A001B4946 /* StatisticCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticCell.swift; sourceTree = "<group>"; };
 		1FCAAB312802369800D6CB28 /* WorkoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCell.swift; sourceTree = "<group>"; };
 		1FCAAB3328024BB300D6CB28 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				1FFF39AE280037FF00F4DA93 /* Workout.swift */,
+				1F9BEA502806623E00F1D90C /* DifferenceWorkout.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				1FFF39952800289600F4DA93 /* AppDelegate.swift in Sources */,
 				1FF590C728044AE7005F540B /* DetailView.swift in Sources */,
 				1FBDFA662805E67A001B4946 /* StatisticCell.swift in Sources */,
+				1F9BEA512806623E00F1D90C /* DifferenceWorkout.swift in Sources */,
 				1FFF39D228004AAE00F4DA93 /* ProfileViewController.swift in Sources */,
 				1FFF39B728003F3E00F4DA93 /* RealmManager.swift in Sources */,
 				1FFF39C02800439800F4DA93 /* UIColor + Extensions.swift in Sources */,
@@ -509,7 +513,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 723HTEFHBA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Workouts/Info.plist;
@@ -522,7 +526,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.3;
+				MARKETING_VERSION = 0.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.ilines.nsu.Workouts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -537,7 +541,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 723HTEFHBA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Workouts/Info.plist;
@@ -550,7 +554,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.3;
+				MARKETING_VERSION = 0.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.ilines.nsu.Workouts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

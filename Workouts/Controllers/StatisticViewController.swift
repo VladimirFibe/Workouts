@@ -13,17 +13,24 @@ class StatisticViewController: WOViewController {
   let idCell = "StatCell"
   private let localRealm = try! Realm()
   private var workouts: Results<Workout>! = nil
+  private var differences = [DifferenceWorkout]()
+  private let today = Date().localDate()
+
   private let segmentControl = UISegmentedControl(items: ["Month", "Year"]).then {
     $0.backgroundColor = .specialGreen
-    $0.tintColor = .red
+    $0.selectedSegmentTintColor = .specialYellow
     $0.selectedSegmentIndex = 1
     $0.addTarget(nil, action: #selector(selectTapped), for: .valueChanged)
+    let font = UIFont.robotoMedium16()
+    $0.setTitleTextAttributes([NSAttributedString.Key.font: font as Any,
+                               NSAttributedString.Key.foregroundColor: UIColor.white],
+                              for: .normal)
+    $0.setTitleTextAttributes([NSAttributedString.Key.font: font as Any,
+                               NSAttributedString.Key.foregroundColor: UIColor.specialGray],
+                              for: .selected)
   }
   
-  private let exercisesLabel = UILabel("Exercises").then {
-    $0.font = .robotoMedium14()
-    $0.textColor = .specialLightBrown
-  }
+  private let exercisesLabel = UILabel("Exercises")
   
   private let tableView = UITableView().then {
     $0.backgroundColor = .none
@@ -34,7 +41,7 @@ class StatisticViewController: WOViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    tableView.reloadData()
+    getDifferences()
   }
   
   override func viewDidLoad() {
@@ -44,9 +51,37 @@ class StatisticViewController: WOViewController {
   }
   
   @objc func selectTapped() {
-    print(segmentControl.selectedSegmentIndex)
+    getDifferences()
   }
   
+  func getDifferences() {
+    differences = [DifferenceWorkout]()
+    let start = segmentControl.selectedSegmentIndex == 0 ? today.offsetDays(7) : today.offsetMonth(1)
+    let end = Date().localDate()
+    let names = getNames()
+    for name in names {
+      let predicateDifference = NSPredicate(format: "name = '\(name)' AND date BETWEEN %@", [start, end])
+      workouts = localRealm.objects(Workout.self).filter(predicateDifference).sorted(byKeyPath: "date")
+      guard let last = workouts.last?.reps,
+            let first = workouts.first?.reps else {
+        return
+      }
+      let difference = DifferenceWorkout(name: name, first: first, last: last)
+      differences.append(difference)
+    }
+    tableView.reloadData()
+  }
+  
+  private func getNames() -> [String] {
+    var names = [String]()
+    workouts = localRealm.objects(Workout.self)
+    for workout in workouts {
+      if !names.contains(workout.name) {
+        names.append(workout.name)
+      }
+    }
+    return names
+  }
   private func getworkouts(_ date: Date) {
     let calendar = Calendar.current
     let formatter = DateFormatter()
@@ -100,12 +135,12 @@ extension StatisticViewController: UITableViewDelegate {
 // MARK: - UITableViewDataSource
 extension StatisticViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    workouts.count
+    differences.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: idCell, for: indexPath) as! StatisticCell
-    let model = workouts[indexPath.row]
+    let model = differences[indexPath.row]
     cell.configure(with: model)
     return cell
   }
