@@ -17,6 +17,9 @@
 		1F8146C4280113DB00BDB7F4 /* DateAndRepeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8146C3280113DB00BDB7F4 /* DateAndRepeatView.swift */; };
 		1F8146C62801151300BDB7F4 /* RepsOrTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8146C52801151300BDB7F4 /* RepsOrTimerView.swift */; };
 		1F9BEA512806623E00F1D90C /* DifferenceWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9BEA502806623E00F1D90C /* DifferenceWorkout.swift */; };
+		1FA7E0182806F9AE0022FC0D /* ProfileTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA7E0172806F9AE0022FC0D /* ProfileTitleView.swift */; };
+		1FA7E01A280712710022FC0D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA7E019280712710022FC0D /* User.swift */; };
+		1FA7E01C280714BA0022FC0D /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA7E01B280714BA0022FC0D /* ProfileCollectionViewCell.swift */; };
 		1FBDFA662805E67A001B4946 /* StatisticCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBDFA652805E67A001B4946 /* StatisticCell.swift */; };
 		1FCAAB322802369800D6CB28 /* WorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCAAB312802369800D6CB28 /* WorkoutCell.swift */; };
 		1FCAAB3428024BB300D6CB28 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCAAB3328024BB300D6CB28 /* StartViewController.swift */; };
@@ -61,6 +64,9 @@
 		1F8146C3280113DB00BDB7F4 /* DateAndRepeatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndRepeatView.swift; sourceTree = "<group>"; };
 		1F8146C52801151300BDB7F4 /* RepsOrTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepsOrTimerView.swift; sourceTree = "<group>"; };
 		1F9BEA502806623E00F1D90C /* DifferenceWorkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifferenceWorkout.swift; sourceTree = "<group>"; };
+		1FA7E0172806F9AE0022FC0D /* ProfileTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTitleView.swift; sourceTree = "<group>"; };
+		1FA7E019280712710022FC0D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1FA7E01B280714BA0022FC0D /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		1FBDFA652805E67A001B4946 /* StatisticCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticCell.swift; sourceTree = "<group>"; };
 		1FCAAB312802369800D6CB28 /* WorkoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCell.swift; sourceTree = "<group>"; };
 		1FCAAB3328024BB300D6CB28 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +122,15 @@
 				1F1CF95128031DDF00C9F1C1 /* NameView.swift */,
 			);
 			path = New;
+			sourceTree = "<group>";
+		};
+		1FA7E0162806F9A00022FC0D /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				1FA7E0172806F9AE0022FC0D /* ProfileTitleView.swift */,
+				1FA7E01B280714BA0022FC0D /* ProfileCollectionViewCell.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		1FBDFA642805E639001B4946 /* Statistic */ = {
@@ -201,6 +216,7 @@
 				1FFF39AE280037FF00F4DA93 /* Workout.swift */,
 				1F9BEA502806623E00F1D90C /* DifferenceWorkout.swift */,
 				1F26C56128069EA6008DCE28 /* ResultWorkout.swift */,
+				1FA7E019280712710022FC0D /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -229,6 +245,7 @@
 		1FFF39B9280040B000F4DA93 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1FA7E0162806F9A00022FC0D /* Profile */,
 				1FBDFA642805E639001B4946 /* Statistic */,
 				1FF590CB28046A40005F540B /* Alerts */,
 				1FF590C528044ACF005F540B /* Start */,
@@ -360,6 +377,7 @@
 				1F1CF95228031DE000C9F1C1 /* NameView.swift in Sources */,
 				1F26C56228069EA6008DCE28 /* ResultWorkout.swift in Sources */,
 				1F02B2E92801C65B00B0DA69 /* CalendarCell.swift in Sources */,
+				1FA7E0182806F9AE0022FC0D /* ProfileTitleView.swift in Sources */,
 				1FFF39C82800457D00F4DA93 /* Then.swift in Sources */,
 				1F4CA83A280083730045659F /* NewWorkoutViewController.swift in Sources */,
 				1FFF39C42800451600F4DA93 /* UIStackView + Extensions.swift in Sources */,
@@ -367,6 +385,7 @@
 				1FF590C728044AE7005F540B /* DetailView.swift in Sources */,
 				1FBDFA662805E67A001B4946 /* StatisticCell.swift in Sources */,
 				1F9BEA512806623E00F1D90C /* DifferenceWorkout.swift in Sources */,
+				1FA7E01A280712710022FC0D /* User.swift in Sources */,
 				1FFF39D228004AAE00F4DA93 /* ProfileViewController.swift in Sources */,
 				1FFF39B728003F3E00F4DA93 /* RealmManager.swift in Sources */,
 				1FFF39C02800439800F4DA93 /* UIColor + Extensions.swift in Sources */,
@@ -379,6 +398,7 @@
 				1F4CA838280076F90045659F /* CalendarView.swift in Sources */,
 				1FFF39AF280037FF00F4DA93 /* Workout.swift in Sources */,
 				1FFF39CC2800460400F4DA93 /* Int + Extensions.swift in Sources */,
+				1FA7E01C280714BA0022FC0D /* ProfileCollectionViewCell.swift in Sources */,
 				1FFF39D028004A9B00F4DA93 /* StatisticViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

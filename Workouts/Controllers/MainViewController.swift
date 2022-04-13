@@ -18,10 +18,9 @@ class MainViewController: UIViewController {
   private let localRealm = try! Realm()
   private var workouts: Results<Workout>! = nil
 
-  private lazy var userPhotoImageView = UIImageView().then {
+  private lazy var userPhotoImageView = UIImageView(image: UIImage(named: "avatar")).then {
     $0.backgroundColor = .systemGray4
     $0.layer.borderColor = UIColor.white.cgColor
-    $0.image = UIImage(named: "avatar")
     $0.clipsToBounds = true
     $0.layer.borderWidth = 5
     $0.layer.cornerRadius = diameter / 2
@@ -62,8 +61,13 @@ class MainViewController: UIViewController {
   }
   func hideornot() {
     tableView.reloadData()
-    imageView.isHidden = true
-    tableView.isHidden = false
+    if workouts.isEmpty {
+      imageView.isHidden = false
+      tableView.isHidden = true
+    } else {
+      imageView.isHidden = true
+      tableView.isHidden = false
+    }
   }
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
@@ -109,6 +113,7 @@ class MainViewController: UIViewController {
     view.addSubview(addWorkoutButton)
     view.addSubview(weatherView)
     view.addSubview(workoutTodayLabel)
+    view.addSubview(imageView)
     view.addSubview(tableView)
   }
   
@@ -142,6 +147,9 @@ class MainViewController: UIViewController {
     tableView.anchor(top: workoutTodayLabel.bottomAnchor,
                      left: view.leftAnchor,
                      bottom: view.bottomAnchor,
+                     right: view.rightAnchor)
+    imageView.anchor(top: workoutTodayLabel.bottomAnchor,
+                     left: view.leftAnchor,
                      right: view.rightAnchor)
   }
 }

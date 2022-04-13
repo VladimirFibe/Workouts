@@ -62,7 +62,7 @@ class WorkoutCell: UITableViewCell {
   
   func configure(with model: Workout) {
     workout = model
-    titleLabel.text = model.name
+    titleLabel.text = model.name //"\(model.name) - \(model.date)"
     let timerString = "Timer \(model.timer.stringFromSeconds())"
     repsLabel.text = model.timer == 0 ? "Reps: \(model.reps)" : timerString
     setsLabel.text = "Sets: \(model.sets)"
