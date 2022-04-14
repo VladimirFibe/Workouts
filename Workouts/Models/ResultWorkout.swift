@@ -9,6 +9,8 @@ import Foundation
 
 struct ResultWorkout {
   let name: String
-  let result: Int
-  let imageData: Data?
+  var result = 0
+  var first = 0
+  var last = 0
+  var imageData: Data? = nil
 }

@@ -77,6 +77,7 @@ class MainViewController: UIViewController {
     super.viewDidLoad()
     getWorkouts(Date())
     configureUI()
+    print("Realm is located at:", localRealm.configuration.fileURL!)
   }
   private func getWorkouts(_ date: Date) {
     let dateTimeZone = date.localDate()

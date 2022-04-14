@@ -75,8 +75,10 @@ class NewWorkoutViewController: WOViewController {
       return
     }
     workout.repeats = dateView.getRepeat()
+    
     RealmManager.shared.save(workout)
     print("Сохранено")
+    createNotifications() 
     workout = Workout()
     nameView.nameTextField.text = ""
     dateView.resetValues()
@@ -99,6 +101,13 @@ class NewWorkoutViewController: WOViewController {
                  paddingTop: 10, paddingLeft: 20, paddingBottom: 10)
     stack.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 40).isActive = true
 
+  }
+  
+  private func createNotifications() {
+    let notifications = Notifications()
+    let stringDate = workout.date.ddMMyyyyfromDate()
+    notifications.scheduleDateNotifications(date: workout.date, id: stringDate)
+    
   }
 }
 

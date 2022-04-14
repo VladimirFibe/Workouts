@@ -36,6 +36,9 @@ class NameView: TitleView, UITextFieldDelegate {
     titleLabel.text = name
     nameTextField.text = value
   }
+  func changeValue(_ value: String) {
+    nameTextField.text = value
+  }
   var value: String {
     nameTextField.text ?? ""
   }

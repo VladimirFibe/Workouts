@@ -57,7 +57,12 @@ extension Date {
     }
     return days
   }
-  
+  func ddMMyyyyfromDate() -> String {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "yyyy/MM/dd"
+    let date = formatter.string(from: self)
+    return date
+  }
 }
 
 struct Days {

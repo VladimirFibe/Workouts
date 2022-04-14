@@ -17,7 +17,9 @@ class ProfileViewController: WOViewController {
   private var users: Results<User>!
   private var results = [ResultWorkout]()
   
-  let titleView = ProfileTitleView()
+  let titleView = ProfileTitleView().then {
+    $0.configure(name: "Брюс Уиллис", image: UIImage(named: "avatar"))
+  }
 
   let heightLabel = UILabel().then {
     $0.text = "Height: 183"
@@ -31,12 +33,13 @@ class ProfileViewController: WOViewController {
     $0.textColor = .specialGray
   }
   
-  private let editButton = UIButton(type: .system).then {
+  private lazy var editButton = UIButton(type: .system).then {
     $0.setTitle("Editing ", for: .normal)
     $0.setImage(UIImage(systemName: "ellipsis.circle.fill"), for: .normal)
     $0.titleLabel?.font = .robotoBold16()
     $0.tintColor = .specialGreen
     $0.semanticContentAttribute = .forceRightToLeft
+    $0.addTarget(self, action: #selector(editingAction), for: .touchUpInside)
   }
   
   private let layout = UICollectionViewFlowLayout().then {
@@ -77,7 +80,7 @@ class ProfileViewController: WOViewController {
     $0.progressTintColor = .specialGreen
     $0.layer.cornerRadius = 14
     $0.clipsToBounds = true
-    $0.setProgress(0.5, animated: false)
+    $0.setProgress(0.1, animated: false)
     $0.layer.sublayers?[1].cornerRadius = 14
     $0.subviews[1].clipsToBounds = true
     $0.heightAnchor.constraint(equalToConstant: 28).isActive = true
@@ -94,6 +97,12 @@ class ProfileViewController: WOViewController {
     collectionView.register(ProfileCollectionViewCell.self, forCellWithReuseIdentifier: idProfileCell)
     getWorkoutResults()
     configureUI()
+  }
+  
+  @objc private func editingAction() {
+    let viewController = SettingViewController()
+    viewController.modalPresentationStyle = .fullScreen
+    present(viewController, animated: true)
   }
   private func configureUI() {
     titleLabel.text = "PROFILE"
@@ -114,7 +123,7 @@ class ProfileViewController: WOViewController {
   private func setupUser() {
     if !users.isEmpty {
       let user = users[0]
-      let name = user.firstname + user.lastname
+      let name = user.firstname + " " + user.lastname
       guard let data = user.image else { return }
       guard let image = UIImage(data: data) else { return }
       titleView.configure(name: name, image: image)

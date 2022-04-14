@@ -19,7 +19,8 @@ class RealmManager {
       localRealm.add(model)
     }
   }
-  
+
+    
   func update(_ model: Workout) {
     try! localRealm.write {
       model.status = true
@@ -37,6 +38,23 @@ class RealmManager {
   func delete(_ model: Workout) {
     try! localRealm.write {
       localRealm.delete(model)
+    }
+  }
+  
+  func save(_ user: User) {
+    let users = localRealm.objects(User.self)
+    try! localRealm.write {
+      if users.isEmpty {
+        localRealm.add(user)
+      } else {
+        let first = users[0]
+        first.firstname = user.firstname
+        first.lastname = user.lastname
+        first.height = user.height
+        first.weight = user.weight
+        first.target = user.target
+        first.image = user.image
+      }
     }
   }
 }

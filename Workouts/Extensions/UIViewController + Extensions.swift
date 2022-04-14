@@ -24,4 +24,19 @@ extension UIViewController {
     alertController.addAction(cancel)
     present(alertController, animated: true, completion: nil)
   }
+  func alertPhoto(completion: @escaping (UIImagePickerController.SourceType) -> Void) {
+    let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+    let camera = UIAlertAction(title: "Camera", style: .default) { _ in
+      completion(.camera)
+    }
+    let photo = UIAlertAction(title: "PhotoLibrary", style: .default) { _ in
+      completion(.photoLibrary)
+    }
+    let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+    
+    alertController.addAction(camera)
+    alertController.addAction(photo)
+    alertController.addAction(cancel)
+    present(alertController, animated: true)
+  }
 }

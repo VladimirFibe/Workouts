@@ -36,7 +36,7 @@ class ProfileCollectionViewCell: UICollectionViewCell {
   
   func configure(with result: ResultWorkout) {
     nameLabel.text = result.name
-    imageView.image = UIImage(named: "workout1")
+    imageView.image = UIImage(named: "workout1")?.withRenderingMode(.alwaysTemplate)
     numberLabel.text = "\(result.result)"
   }
   

@@ -13,7 +13,9 @@ class StatisticViewController: WOViewController {
   let idCell = "StatCell"
   private let localRealm = try! Realm()
   private var workouts: Results<Workout>! = nil
-  private var differences = [DifferenceWorkout]()
+  private var differences = [ResultWorkout]()
+  private var filtered = [ResultWorkout]()
+  private var isFiltred = false
   private let today = Date().localDate()
 
   private let segmentControl = UISegmentedControl(items: ["Month", "Year"]).then {
@@ -30,6 +32,18 @@ class StatisticViewController: WOViewController {
                               for: .selected)
   }
   
+  private let nameTextField = UITextField().then {
+    $0.backgroundColor = .specialBrown
+    $0.borderStyle = .none
+    $0.textColor = .specialGray
+    $0.font = .robotoBold20()
+    $0.layer.cornerRadius = 10
+    $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: $0.frame.height))
+    $0.leftViewMode = .always
+    $0.clearButtonMode = .always
+    $0.returnKeyType = .search
+    $0.heightAnchor.constraint(equalToConstant: 38).isActive = true
+  }
   private let exercisesLabel = UILabel("Exercises")
   
   private let tableView = UITableView().then {
@@ -55,7 +69,7 @@ class StatisticViewController: WOViewController {
   }
   
   func getDifferences() {
-    differences = [DifferenceWorkout]()
+    differences = [ResultWorkout]()
     let start = segmentControl.selectedSegmentIndex == 0 ? today.offsetDays(7) : today.offsetMonth(1)
     let end = Date().localDate()
     let names = getNames()
@@ -66,7 +80,7 @@ class StatisticViewController: WOViewController {
             let first = workouts.first?.reps else {
         return
       }
-      let difference = DifferenceWorkout(name: name, first: first, last: last)
+      let difference = ResultWorkout(name: name, first: first, last: last)
       differences.append(difference)
     }
     tableView.reloadData()
@@ -110,10 +124,41 @@ class StatisticViewController: WOViewController {
     closeButton.isHidden = true
     tableView.delegate = self
     tableView.dataSource = self
+    nameTextField.delegate = self
     tableView.register(StatisticCell.self, forCellReuseIdentifier: idCell)
-    let stack = UIStackView(arrangedSubviews: [segmentControl, exercisesLabel, tableView], axis: .vertical, spacing: 20)
+    let stack = UIStackView(arrangedSubviews: [segmentControl, nameTextField, exercisesLabel, tableView], axis: .vertical, spacing: 20)
     view.addSubview(stack)
     stack.anchor(top: titleLabel.bottomAnchor, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 20, paddingRight: 20)
+  }
+  
+  private func filteringWorkouts(searchText: String) {
+    filtered = []
+    for workout in differences {
+      if workout.name.lowercased().contains(searchText.lowercased()) {
+        filtered.append(workout)
+      }
+    }
+    tableView.reloadData()
+  }
+}
+// MARK: - UITextFieldDelegate
+extension StatisticViewController: UITextFieldDelegate {
+  func textFieldShouldClear(_ textField: UITextField) -> Bool {
+    isFiltred = false
+    filtered = []
+    tableView.reloadData()
+    return true
+  }
+  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    if let text = textField.text, let textRange = Range(range, in: text) {
+      let updatedText = text.replacingCharacters(in: textRange, with: string)
+      isFiltred = updatedText.count > 0
+      filteringWorkouts(searchText: updatedText)
+    }
+    return true
+  }
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    nameTextField.resignFirstResponder()
   }
 }
 // MARK: - UITableViewDelegate
@@ -135,12 +180,11 @@ extension StatisticViewController: UITableViewDelegate {
 // MARK: - UITableViewDataSource
 extension StatisticViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    differences.count
+    isFiltred ? filtered.count : differences.count
   }
-  
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: idCell, for: indexPath) as! StatisticCell
-    let model = differences[indexPath.row]
+    let model = isFiltred ? filtered[indexPath.row] : differences[indexPath.row]
     cell.configure(with: model)
     return cell
   }

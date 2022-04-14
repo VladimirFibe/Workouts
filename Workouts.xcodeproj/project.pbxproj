@@ -16,13 +16,14 @@
 		1F4CA83C2800872E0045659F /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4CA83B2800872E0045659F /* WeatherView.swift */; };
 		1F8146C4280113DB00BDB7F4 /* DateAndRepeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8146C3280113DB00BDB7F4 /* DateAndRepeatView.swift */; };
 		1F8146C62801151300BDB7F4 /* RepsOrTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8146C52801151300BDB7F4 /* RepsOrTimerView.swift */; };
-		1F9BEA512806623E00F1D90C /* DifferenceWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9BEA502806623E00F1D90C /* DifferenceWorkout.swift */; };
 		1FA7E0182806F9AE0022FC0D /* ProfileTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA7E0172806F9AE0022FC0D /* ProfileTitleView.swift */; };
 		1FA7E01A280712710022FC0D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA7E019280712710022FC0D /* User.swift */; };
 		1FA7E01C280714BA0022FC0D /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA7E01B280714BA0022FC0D /* ProfileCollectionViewCell.swift */; };
 		1FBDFA662805E67A001B4946 /* StatisticCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBDFA652805E67A001B4946 /* StatisticCell.swift */; };
 		1FCAAB322802369800D6CB28 /* WorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCAAB312802369800D6CB28 /* WorkoutCell.swift */; };
 		1FCAAB3428024BB300D6CB28 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCAAB3328024BB300D6CB28 /* StartViewController.swift */; };
+		1FCFA6F42807751C00D096A5 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCFA6F32807751C00D096A5 /* SettingViewController.swift */; };
+		1FE5C3AD28083FA400F596A8 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5C3AC28083FA400F596A8 /* Notifications.swift */; };
 		1FF5550B2801448500652598 /* WorkoutSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF5550A2801448500652598 /* WorkoutSliderView.swift */; };
 		1FF590C728044AE7005F540B /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF590C628044AE7005F540B /* DetailView.swift */; };
 		1FF590C928044CBC005F540B /* DetailRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF590C828044CBC005F540B /* DetailRowView.swift */; };
@@ -63,13 +64,14 @@
 		1F4CA83B2800872E0045659F /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		1F8146C3280113DB00BDB7F4 /* DateAndRepeatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndRepeatView.swift; sourceTree = "<group>"; };
 		1F8146C52801151300BDB7F4 /* RepsOrTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepsOrTimerView.swift; sourceTree = "<group>"; };
-		1F9BEA502806623E00F1D90C /* DifferenceWorkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifferenceWorkout.swift; sourceTree = "<group>"; };
 		1FA7E0172806F9AE0022FC0D /* ProfileTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTitleView.swift; sourceTree = "<group>"; };
 		1FA7E019280712710022FC0D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1FA7E01B280714BA0022FC0D /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		1FBDFA652805E67A001B4946 /* StatisticCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticCell.swift; sourceTree = "<group>"; };
 		1FCAAB312802369800D6CB28 /* WorkoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCell.swift; sourceTree = "<group>"; };
 		1FCAAB3328024BB300D6CB28 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		1FCFA6F32807751C00D096A5 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		1FE5C3AC28083FA400F596A8 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		1FF5550A2801448500652598 /* WorkoutSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSliderView.swift; sourceTree = "<group>"; };
 		1FF590C628044AE7005F540B /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		1FF590C828044CBC005F540B /* DetailRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRowView.swift; sourceTree = "<group>"; };
@@ -185,8 +187,8 @@
 		1FFF39932800289600F4DA93 /* Workouts */ = {
 			isa = PBXGroup;
 			children = (
-				1FFF39BC2800412500F4DA93 /* Extensions */,
 				1FFF39AC280030F700F4DA93 /* Apps */,
+				1FFF39BC2800412500F4DA93 /* Extensions */,
 				1FFF39AD280037D900F4DA93 /* Models */,
 				1FFF39B528003F2300F4DA93 /* Services */,
 				1FFF39B82800409A00F4DA93 /* Controllers */,
@@ -206,6 +208,7 @@
 				1FFF39942800289600F4DA93 /* AppDelegate.swift */,
 				1FFF39962800289600F4DA93 /* SceneDelegate.swift */,
 				1FFF39982800289600F4DA93 /* ViewController.swift */,
+				1FE5C3AC28083FA400F596A8 /* Notifications.swift */,
 			);
 			path = Apps;
 			sourceTree = "<group>";
@@ -214,7 +217,6 @@
 			isa = PBXGroup;
 			children = (
 				1FFF39AE280037FF00F4DA93 /* Workout.swift */,
-				1F9BEA502806623E00F1D90C /* DifferenceWorkout.swift */,
 				1F26C56128069EA6008DCE28 /* ResultWorkout.swift */,
 				1FA7E019280712710022FC0D /* User.swift */,
 			);
@@ -238,6 +240,7 @@
 				1FFF39D128004AAE00F4DA93 /* ProfileViewController.swift */,
 				1F4CA839280083730045659F /* NewWorkoutViewController.swift */,
 				1FCAAB3328024BB300D6CB28 /* StartViewController.swift */,
+				1FCFA6F32807751C00D096A5 /* SettingViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -380,17 +383,18 @@
 				1FA7E0182806F9AE0022FC0D /* ProfileTitleView.swift in Sources */,
 				1FFF39C82800457D00F4DA93 /* Then.swift in Sources */,
 				1F4CA83A280083730045659F /* NewWorkoutViewController.swift in Sources */,
+				1FE5C3AD28083FA400F596A8 /* Notifications.swift in Sources */,
 				1FFF39C42800451600F4DA93 /* UIStackView + Extensions.swift in Sources */,
 				1FFF39952800289600F4DA93 /* AppDelegate.swift in Sources */,
 				1FF590C728044AE7005F540B /* DetailView.swift in Sources */,
 				1FBDFA662805E67A001B4946 /* StatisticCell.swift in Sources */,
-				1F9BEA512806623E00F1D90C /* DifferenceWorkout.swift in Sources */,
 				1FA7E01A280712710022FC0D /* User.swift in Sources */,
 				1FFF39D228004AAE00F4DA93 /* ProfileViewController.swift in Sources */,
 				1FFF39B728003F3E00F4DA93 /* RealmManager.swift in Sources */,
 				1FFF39C02800439800F4DA93 /* UIColor + Extensions.swift in Sources */,
 				1FFF39CE2800465F00F4DA93 /* MainViewController.swift in Sources */,
 				1FFF39972800289600F4DA93 /* SceneDelegate.swift in Sources */,
+				1FCFA6F42807751C00D096A5 /* SettingViewController.swift in Sources */,
 				1FFF39C22800449100F4DA93 /* UIView + Extensions.swift in Sources */,
 				1FFF39CA280045D900F4DA93 /* Date + Extensions.swift in Sources */,
 				1F4CA83C2800872E0045659F /* WeatherView.swift in Sources */,
@@ -541,6 +545,8 @@
 				DEVELOPMENT_TEAM = 723HTEFHBA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Workouts/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = Camera;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = Photo;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -569,6 +575,8 @@
 				DEVELOPMENT_TEAM = 723HTEFHBA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Workouts/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = Camera;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = Photo;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

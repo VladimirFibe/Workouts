@@ -35,7 +35,7 @@ class StatisticCell: UITableViewCell {
     fatalError("init(coder:) has not been implemented")
   }
   
-  func configure(with model: DifferenceWorkout) {
+  func configure(with model: ResultWorkout) {
     nameLabel.text = model.name
     beforeLabel.text = "Before: \(model.first) Now: \(model.last)"
     let difference = model.last - model.first

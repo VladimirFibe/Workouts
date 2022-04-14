@@ -6,10 +6,16 @@
 //
 
 import UIKit
+import UserNotifications
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+  
+  let notifications = Notifications()
+  
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    notifications.requesAutorization()
+    notifications.notificationCenter.delegate = notifications
     return true
   }
 
