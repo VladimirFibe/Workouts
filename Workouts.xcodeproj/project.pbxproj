@@ -24,6 +24,9 @@
 		1FCAAB3428024BB300D6CB28 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCAAB3328024BB300D6CB28 /* StartViewController.swift */; };
 		1FCFA6F42807751C00D096A5 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCFA6F32807751C00D096A5 /* SettingViewController.swift */; };
 		1FE5C3AD28083FA400F596A8 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5C3AC28083FA400F596A8 /* Notifications.swift */; };
+		1FE5C3AF2808626100F596A8 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5C3AE2808626100F596A8 /* OnboardingViewController.swift */; };
+		1FE5C3B12808628B00F596A8 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5C3B02808628B00F596A8 /* Onboarding.swift */; };
+		1FE5C3B428086BE700F596A8 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5C3B328086BE700F596A8 /* OnboardingCollectionViewCell.swift */; };
 		1FF5550B2801448500652598 /* WorkoutSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF5550A2801448500652598 /* WorkoutSliderView.swift */; };
 		1FF590C728044AE7005F540B /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF590C628044AE7005F540B /* DetailView.swift */; };
 		1FF590C928044CBC005F540B /* DetailRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF590C828044CBC005F540B /* DetailRowView.swift */; };
@@ -72,6 +75,9 @@
 		1FCAAB3328024BB300D6CB28 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		1FCFA6F32807751C00D096A5 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		1FE5C3AC28083FA400F596A8 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		1FE5C3AE2808626100F596A8 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		1FE5C3B02808628B00F596A8 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		1FE5C3B328086BE700F596A8 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
 		1FF5550A2801448500652598 /* WorkoutSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSliderView.swift; sourceTree = "<group>"; };
 		1FF590C628044AE7005F540B /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		1FF590C828044CBC005F540B /* DetailRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRowView.swift; sourceTree = "<group>"; };
@@ -141,6 +147,14 @@
 				1FBDFA652805E67A001B4946 /* StatisticCell.swift */,
 			);
 			path = Statistic;
+			sourceTree = "<group>";
+		};
+		1FE5C3B228086BC600F596A8 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				1FE5C3B328086BE700F596A8 /* OnboardingCollectionViewCell.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		1FF590C528044ACF005F540B /* Start */ = {
@@ -219,6 +233,7 @@
 				1FFF39AE280037FF00F4DA93 /* Workout.swift */,
 				1F26C56128069EA6008DCE28 /* ResultWorkout.swift */,
 				1FA7E019280712710022FC0D /* User.swift */,
+				1FE5C3B02808628B00F596A8 /* Onboarding.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -241,6 +256,7 @@
 				1F4CA839280083730045659F /* NewWorkoutViewController.swift */,
 				1FCAAB3328024BB300D6CB28 /* StartViewController.swift */,
 				1FCFA6F32807751C00D096A5 /* SettingViewController.swift */,
+				1FE5C3AE2808626100F596A8 /* OnboardingViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -248,6 +264,7 @@
 		1FFF39B9280040B000F4DA93 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1FE5C3B228086BC600F596A8 /* Onboarding */,
 				1FA7E0162806F9A00022FC0D /* Profile */,
 				1FBDFA642805E639001B4946 /* Statistic */,
 				1FF590CB28046A40005F540B /* Alerts */,
@@ -370,6 +387,7 @@
 				1FCAAB322802369800D6CB28 /* WorkoutCell.swift in Sources */,
 				1FFF39BB280040E600F4DA93 /* WOViewController.swift in Sources */,
 				1FFF39C62800455800F4DA93 /* UILabel + Extensions.swift in Sources */,
+				1FE5C3B428086BE700F596A8 /* OnboardingCollectionViewCell.swift in Sources */,
 				1FF590CD28046A89005F540B /* UIViewController + Extensions.swift in Sources */,
 				1FF5550B2801448500652598 /* WorkoutSliderView.swift in Sources */,
 				1F0FE923280285030050E836 /* TitleView.swift in Sources */,
@@ -392,6 +410,7 @@
 				1FFF39D228004AAE00F4DA93 /* ProfileViewController.swift in Sources */,
 				1FFF39B728003F3E00F4DA93 /* RealmManager.swift in Sources */,
 				1FFF39C02800439800F4DA93 /* UIColor + Extensions.swift in Sources */,
+				1FE5C3AF2808626100F596A8 /* OnboardingViewController.swift in Sources */,
 				1FFF39CE2800465F00F4DA93 /* MainViewController.swift in Sources */,
 				1FFF39972800289600F4DA93 /* SceneDelegate.swift in Sources */,
 				1FCFA6F42807751C00D096A5 /* SettingViewController.swift in Sources */,
@@ -403,6 +422,7 @@
 				1FFF39AF280037FF00F4DA93 /* Workout.swift in Sources */,
 				1FFF39CC2800460400F4DA93 /* Int + Extensions.swift in Sources */,
 				1FA7E01C280714BA0022FC0D /* ProfileCollectionViewCell.swift in Sources */,
+				1FE5C3B12808628B00F596A8 /* Onboarding.swift in Sources */,
 				1FFF39D028004A9B00F4DA93 /* StatisticViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -541,7 +561,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 723HTEFHBA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Workouts/Info.plist;
@@ -556,7 +576,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.4;
+				MARKETING_VERSION = 0.1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.ilines.nsu.Workouts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -571,7 +591,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 723HTEFHBA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Workouts/Info.plist;
@@ -586,7 +606,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.4;
+				MARKETING_VERSION = 0.1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.ilines.nsu.Workouts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

@@ -171,7 +171,6 @@ extension ProfileViewController: UICollectionViewDataSource {
     return cell
   }
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    print(results.count)
    return results.count
   }
   

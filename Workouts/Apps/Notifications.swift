@@ -21,7 +21,6 @@ class Notifications: NSObject {
   
   func getNotificationSettings() {
     notificationCenter.getNotificationSettings { settings in
-      print(settings)
     }
   }
   

@@ -18,11 +18,11 @@ class StatisticViewController: WOViewController {
   private var isFiltred = false
   private let today = Date().localDate()
 
-  private let segmentControl = UISegmentedControl(items: ["Month", "Year"]).then {
+  private lazy var segmentControl = UISegmentedControl(items: ["Month", "Year"]).then {
     $0.backgroundColor = .specialGreen
     $0.selectedSegmentTintColor = .specialYellow
     $0.selectedSegmentIndex = 1
-    $0.addTarget(nil, action: #selector(selectTapped), for: .valueChanged)
+    $0.addTarget(self, action: #selector(selectTapped), for: .valueChanged)
     let font = UIFont.robotoMedium16()
     $0.setTitleTextAttributes([NSAttributedString.Key.font: font as Any,
                                NSAttributedString.Key.foregroundColor: UIColor.white],

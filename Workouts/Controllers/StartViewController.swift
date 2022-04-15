@@ -35,14 +35,14 @@ class StartViewController: WOViewController {
     }
   }
   let detailView = DetailView(frame: .zero)
-  private let finishButton = UIButton().then {
+  private lazy var finishButton = UIButton().then {
     $0.backgroundColor = .specialGreen
     $0.setTitle("FINISH", for: .normal)
     $0.tintColor = .white
     $0.titleLabel?.font = .robotoBold16()
     $0.layer.cornerRadius = 10
     $0.heightAnchor.constraint(equalToConstant: 55).isActive = true
-    $0.addTarget(nil, action: #selector(finishButtonTapped), for: .touchUpInside)
+    $0.addTarget(self, action: #selector(finishButtonTapped), for: .touchUpInside)
   }
   
   override func viewDidLayoutSubviews() {

@@ -77,7 +77,11 @@ class MainViewController: UIViewController {
     super.viewDidLoad()
     getWorkouts(Date())
     configureUI()
-    print("Realm is located at:", localRealm.configuration.fileURL!)
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    showOnboarding()
   }
   private func getWorkouts(_ date: Date) {
     let dateTimeZone = date.localDate()
@@ -152,6 +156,17 @@ class MainViewController: UIViewController {
     imageView.anchor(top: workoutTodayLabel.bottomAnchor,
                      left: view.leftAnchor,
                      right: view.rightAnchor)
+  }
+  
+  private func showOnboarding() {
+    let userDefaults = UserDefaults.standard
+    let onBoardingViewed = userDefaults.bool(forKey: "OnBoardingWasviewed")
+    if !onBoardingViewed {
+      let viewController = OnboardingViewController()
+      viewController.modalPresentationStyle = .fullScreen
+      present(viewController, animated: false)
+      
+    }
   }
 }
 // MARK: - CalenderViewDelegate

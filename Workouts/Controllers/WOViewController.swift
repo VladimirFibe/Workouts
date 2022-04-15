@@ -19,7 +19,7 @@ class WOViewController: UIViewController {
   }
   lazy var closeButton = UIButton().then {
     $0.setImage(UIImage(named: "close")?.withRenderingMode(.alwaysOriginal), for: .normal)
-    $0.addTarget(nil, action: #selector(closeAction), for: .touchUpInside)
+    $0.addTarget(self, action: #selector(closeAction), for: .touchUpInside)
     $0.layer.cornerRadius = $0.frame.height / 2
   }
   @objc func closeAction() {
