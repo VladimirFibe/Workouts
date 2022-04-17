@@ -11,6 +11,9 @@
 		1F0FE923280285030050E836 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0FE922280285030050E836 /* TitleView.swift */; };
 		1F1CF95228031DE000C9F1C1 /* NameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1CF95128031DDF00C9F1C1 /* NameView.swift */; };
 		1F26C56228069EA6008DCE28 /* ResultWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F26C56128069EA6008DCE28 /* ResultWorkout.swift */; };
+		1F433A702809256B00B82FB0 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F433A6F2809256B00B82FB0 /* NetworkRequest.swift */; };
+		1F433A722809296600B82FB0 /* NetworkDataFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F433A712809296600B82FB0 /* NetworkDataFetch.swift */; };
+		1F433A74280929CD00B82FB0 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F433A73280929CD00B82FB0 /* WeatherModel.swift */; };
 		1F4CA838280076F90045659F /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4CA837280076F90045659F /* CalendarView.swift */; };
 		1F4CA83A280083730045659F /* NewWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4CA839280083730045659F /* NewWorkoutViewController.swift */; };
 		1F4CA83C2800872E0045659F /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4CA83B2800872E0045659F /* WeatherView.swift */; };
@@ -62,6 +65,9 @@
 		1F0FE922280285030050E836 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		1F1CF95128031DDF00C9F1C1 /* NameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameView.swift; sourceTree = "<group>"; };
 		1F26C56128069EA6008DCE28 /* ResultWorkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultWorkout.swift; sourceTree = "<group>"; };
+		1F433A6F2809256B00B82FB0 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		1F433A712809296600B82FB0 /* NetworkDataFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetch.swift; sourceTree = "<group>"; };
+		1F433A73280929CD00B82FB0 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		1F4CA837280076F90045659F /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		1F4CA839280083730045659F /* NewWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWorkoutViewController.swift; sourceTree = "<group>"; };
 		1F4CA83B2800872E0045659F /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
@@ -121,6 +127,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F433A6E2809254D00B82FB0 /* Networks */ = {
+			isa = PBXGroup;
+			children = (
+				1F433A6F2809256B00B82FB0 /* NetworkRequest.swift */,
+				1F433A712809296600B82FB0 /* NetworkDataFetch.swift */,
+			);
+			path = Networks;
+			sourceTree = "<group>";
+		};
 		1F8146C2280113A700BDB7F4 /* New */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +216,7 @@
 		1FFF39932800289600F4DA93 /* Workouts */ = {
 			isa = PBXGroup;
 			children = (
+				1F433A6E2809254D00B82FB0 /* Networks */,
 				1FFF39AC280030F700F4DA93 /* Apps */,
 				1FFF39BC2800412500F4DA93 /* Extensions */,
 				1FFF39AD280037D900F4DA93 /* Models */,
@@ -234,6 +250,7 @@
 				1F26C56128069EA6008DCE28 /* ResultWorkout.swift */,
 				1FA7E019280712710022FC0D /* User.swift */,
 				1FE5C3B02808628B00F596A8 /* Onboarding.swift */,
+				1F433A73280929CD00B82FB0 /* WeatherModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -386,9 +403,11 @@
 				1F8146C4280113DB00BDB7F4 /* DateAndRepeatView.swift in Sources */,
 				1FCAAB322802369800D6CB28 /* WorkoutCell.swift in Sources */,
 				1FFF39BB280040E600F4DA93 /* WOViewController.swift in Sources */,
+				1F433A74280929CD00B82FB0 /* WeatherModel.swift in Sources */,
 				1FFF39C62800455800F4DA93 /* UILabel + Extensions.swift in Sources */,
 				1FE5C3B428086BE700F596A8 /* OnboardingCollectionViewCell.swift in Sources */,
 				1FF590CD28046A89005F540B /* UIViewController + Extensions.swift in Sources */,
+				1F433A722809296600B82FB0 /* NetworkDataFetch.swift in Sources */,
 				1FF5550B2801448500652598 /* WorkoutSliderView.swift in Sources */,
 				1F0FE923280285030050E836 /* TitleView.swift in Sources */,
 				1F8146C62801151300BDB7F4 /* RepsOrTimerView.swift in Sources */,
@@ -421,6 +440,7 @@
 				1F4CA838280076F90045659F /* CalendarView.swift in Sources */,
 				1FFF39AF280037FF00F4DA93 /* Workout.swift in Sources */,
 				1FFF39CC2800460400F4DA93 /* Int + Extensions.swift in Sources */,
+				1F433A702809256B00B82FB0 /* NetworkRequest.swift in Sources */,
 				1FA7E01C280714BA0022FC0D /* ProfileCollectionViewCell.swift in Sources */,
 				1FE5C3B12808628B00F596A8 /* Onboarding.swift in Sources */,
 				1FFF39D028004A9B00F4DA93 /* StatisticViewController.swift in Sources */,

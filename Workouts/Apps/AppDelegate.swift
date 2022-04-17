@@ -14,6 +14,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   let notifications = Notifications()
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    NetworkDataFetch.shared.fetchWeather { weather, error in
+      if let weather = weather {
+        print(weather)
+      }
+    }
     notifications.requesAutorization()
     notifications.notificationCenter.delegate = notifications
     return true

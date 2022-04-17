@@ -17,7 +17,7 @@ class MainViewController: UIViewController {
   let calendarHeight = 70.0
   private let localRealm = try! Realm()
   private var workouts: Results<Workout>! = nil
-
+  private var users: Results<User>!
   private lazy var userPhotoImageView = UIImageView(image: UIImage(named: "avatar")).then {
     $0.backgroundColor = .systemGray4
     $0.layer.borderColor = UIColor.white.cgColor
@@ -25,7 +25,6 @@ class MainViewController: UIViewController {
     $0.layer.borderWidth = 5
     $0.layer.cornerRadius = diameter / 2
   }
-  
   private let userNameLabel = UILabel().then {
     $0.text = "Брюс Уиллис"
     $0.textColor = .specialGray
@@ -33,9 +32,7 @@ class MainViewController: UIViewController {
     $0.minimumScaleFactor = 0.5
     $0.adjustsFontSizeToFitWidth = true
   }
-  
   private let calendarView = CalendarView(frame: .zero)
-  
   private lazy var addWorkoutButton = UIButton(type: .system).then {
     $0.backgroundColor = .specialYellow
     $0.layer.cornerRadius = 10
@@ -44,18 +41,14 @@ class MainViewController: UIViewController {
     $0.addShadowOnView()
     $0.addTarget(self, action: #selector(addWorkoutAction), for: .touchUpInside)
   }
-  
   private let weatherView = WeatherView(frame: .zero)
-  
   private let workoutTodayLabel = UILabel("Workout today")
-  
   private let tableView = UITableView().then {
     $0.backgroundColor = .none
     $0.separatorStyle = .none
     $0.showsVerticalScrollIndicator = false
     $0.bounces = false
   }
-  
   private let imageView = UIImageView(image: UIImage(named: "notraining")).then {
     $0.contentMode = .scaleAspectFit
   }
@@ -72,9 +65,11 @@ class MainViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     hideornot()
+    setupUser()
   }
   override func viewDidLoad() {
     super.viewDidLoad()
+    users = localRealm.objects(User.self)
     getWorkouts(Date())
     configureUI()
   }
@@ -92,6 +87,15 @@ class MainViewController: UIViewController {
     let compund = NSCompoundPredicate(type: .or, subpredicates: [predicateRepeat, predicateUnrepeat])
     workouts = localRealm.objects(Workout.self).filter(compund).sorted(byKeyPath: "name")
     hideornot()
+  }
+  private func setupUser() {
+    if users.count > 0 {
+      let user = users[0]
+      userNameLabel.text = user.firstname + " " + user.lastname
+      guard let data = user.image else { return }
+      guard let image = UIImage(data: data) else { return }
+      userPhotoImageView.image = image
+    }
   }
   // MARK: - Actions
   @objc private func addWorkoutAction() {
