@@ -49,22 +49,10 @@ class MainViewController: UIViewController {
     $0.showsVerticalScrollIndicator = false
     $0.bounces = false
   }
-  private let imageView = UIImageView(image: UIImage(named: "notraining")).then {
-    $0.contentMode = .scaleAspectFit
-  }
-  func hideornot() {
-    tableView.reloadData()
-    if workouts.isEmpty {
-      imageView.isHidden = false
-      tableView.isHidden = true
-    } else {
-      imageView.isHidden = true
-      tableView.isHidden = false
-    }
-  }
+
+
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    hideornot()
     setupUser()
   }
   override func viewDidLoad() {
@@ -86,7 +74,7 @@ class MainViewController: UIViewController {
     let predicateUnrepeat = NSPredicate(format: "repeats = false AND date BETWEEN %@", [dateStart, dateEnd])
     let compund = NSCompoundPredicate(type: .or, subpredicates: [predicateRepeat, predicateUnrepeat])
     workouts = localRealm.objects(Workout.self).filter(compund).sorted(byKeyPath: "name")
-    hideornot()
+    tableView.reloadData()
   }
   private func setupUser() {
     if users.count > 0 {
@@ -122,7 +110,6 @@ class MainViewController: UIViewController {
     view.addSubview(addWorkoutButton)
     view.addSubview(weatherView)
     view.addSubview(workoutTodayLabel)
-    view.addSubview(imageView)
     view.addSubview(tableView)
   }
   
@@ -157,9 +144,7 @@ class MainViewController: UIViewController {
                      left: view.leftAnchor,
                      bottom: view.bottomAnchor,
                      right: view.rightAnchor)
-    imageView.anchor(top: workoutTodayLabel.bottomAnchor,
-                     left: view.leftAnchor,
-                     right: view.rightAnchor)
+
   }
   
   private func showOnboarding() {
@@ -182,6 +167,14 @@ extension MainViewController: CalenderViewDelegate {
 }
 // MARK: - UITableViewDelegate
 extension MainViewController: UITableViewDelegate {
+  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    let imageView = UIImageView(image: UIImage(named: "notraining"))
+    imageView.contentMode = .scaleAspectFit
+    return imageView
+  }
+  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    workouts.isEmpty ? 300 : 0
+  }
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     100
   }
